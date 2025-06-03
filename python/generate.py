@@ -79,8 +79,7 @@ class Laby2d:
 
     def getMcFunction(self, paths='air', walls='stone', dpath=2, dwall=1):
         dboth = dwall + dpath
-        # result = f'fill ~ ~-3 ~ ~{self.w * dboth + dwall - 1} ~-1 ~{self.h * dboth + dwall - 1} {walls}'
-        result = f'\ntellraw @s "Du brauchst vorher"\ntellraw @s "/fill ~ ~-3 ~ ~{self.w * dboth + dwall - 1} ~-1 ~{self.h * dboth + dwall - 1} {walls}"'
+        result = f'tellraw @s "Du brauchst vorher"\ntellraw @s "/fill ~ ~-3 ~ ~{self.w * dboth + dwall - 1} ~-1 ~{self.h * dboth + dwall - 1} {walls}"'
         # horizontal
         for j in range(self.h):
             start = -1
@@ -196,8 +195,7 @@ class Laby3d:
 
     def getMcFunction(self, paths='air', walls='stone', dpath=2, dwall=1):
         dboth = dwall + dpath
-        # result = f'fill ~ ~-3 ~ ~{self.w * dboth + dwall - 1} ~-1 ~{self.h * dboth + dwall - 1} {walls}'
-        result = f'\ntellraw @s "Du brauchst vorher"\ntellraw @s "/fill ~ ~ ~ ~{self.w * dboth + dwall - 1} ~{self.h * dboth + dwall - 1} ~{-(self.l * dboth + dwall - 1)} {walls}"'
+        result = f'tellraw @s "Du brauchst vorher"\ntellraw @s "/fill ~ ~-1 ~ ~{self.w * dboth + dwall - 1} ~{-(self.h * dboth + dwall)} ~{self.l * dboth + dwall - 1} {walls}"'
         # x direction
         for k in range(self.l):
             kk = k * dboth + dwall
@@ -208,7 +206,7 @@ class Laby3d:
                     if self.arr[k][j][i] & 1 == 1 and start < 0:
                         start = i
                     if self.arr[k][j][i] & 1 == 0 and start >= 0:
-                        result += f'\nfill ~{start * dboth + dwall} ~{jj} ~{-kk} ~{(i + 1) * dboth - 1} ~{jj + dpath - 1} ~{-(kk + dpath - 1)} {paths}'
+                        result += f'\nfill ~{start * dboth + dwall} ~{-jj-1} ~{kk} ~{(i + 1) * dboth - 1} ~{-(jj + dpath)} ~{kk + dpath - 1} {paths}'
                         start = -1
         # y direction
         for k in range(self.l):
@@ -220,7 +218,7 @@ class Laby3d:
                     if self.arr[k][j][i] & 2 == 2 and start < 0:
                         start = j
                     if self.arr[k][j][i] & 2 == 0 and start >= 0:
-                        result += f'\nfill ~{ii} ~{start * dboth + dwall} ~{-kk} ~{ii + dpath - 1} ~{(j + 1) * dboth - 1} ~{-(kk + dpath - 1)} {paths}'
+                        result += f'\nfill ~{ii} ~{-(start * dboth + dwall) - 1} ~{kk} ~{ii + dpath - 1} ~{-((j + 1) * dboth)} ~{kk + dpath - 1} {paths}'
                         start = -1
         # z direction
         for j in range(self.h):
@@ -230,9 +228,9 @@ class Laby3d:
                 start = -1
                 for k in range(self.l):
                     if self.arr[k][j][i] & 4 == 4 and start < 0:
-                        start = j
+                        start = k
                     if self.arr[k][j][i] & 4 == 0 and start >= 0:
-                        result += f'\nfill ~{ii} ~{jj} ~{-(start * dboth + dwall)} ~{ii + dpath - 1} ~{jj + dpath - 1} ~{-((k + 1) * dboth - 1)} {paths}'
+                        result += f'\nfill ~{ii} ~{-jj - 1} ~{start * dboth + dwall} ~{ii + dpath - 1} ~{-(jj + dpath)} ~{(k + 1) * dboth - 1} {paths}'
                         start = -1
         result = result.replace('~0 ', '~ ')
         result += f'\ntellraw @s "2D Labyrinth {self.w}x{self.h}x{self.l} erzeugt, Wände {dwall}, Gänge {dpath}."'
