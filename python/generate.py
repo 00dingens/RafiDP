@@ -1,7 +1,7 @@
 import os
 import random
 
-dpPath = "rafidp/data/rafidp/"
+dpPath = "data/rafidp/"
 if not os.path.exists(dpPath):
     os.makedirs(dpPath + "function")
 
