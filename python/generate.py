@@ -1,7 +1,7 @@
 import os
 import random
 
-dpPath = "RafiDP/data/RafiDP/"
+dpPath = "rafidp/data/rafidp/"
 if not os.path.exists(dpPath):
     os.makedirs(dpPath + "function")
 
@@ -240,7 +240,7 @@ class Laby3d:
 
 
 
-l = Laby3d(7,7, 7)
+l = Laby3d(7,7,7)
 print(str(l))
 with open(dpPath + "function/labyrinth7x7x7.mcfunction", "w") as file:
     file.writelines(l.getMcFunction())

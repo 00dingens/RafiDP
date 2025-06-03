@@ -1,7 +1,7 @@
 # Hier wird das Datapack gebaut
-datapack: RafiDP
-	zip RafiDP.zip RafiDP
+datapack: rafidp
+	zip rafidp.zip rafidp
 
-RafiDP: python/generate.py
+rafidp: python/generate.py
 	python3 python/generate.py
 
