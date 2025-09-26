@@ -1,10 +1,11 @@
 import os
 import random
 
-dpPath = "data/rafidp/"
+dpPath = "../data/rafidp/"
 if not os.path.exists(dpPath):
     os.makedirs(dpPath + "function")
 
+debugLaby = False
 
 class Laby2d:
     def __init__(self, w, h):
@@ -48,9 +49,11 @@ class Laby2d:
             todo = notDone
             # print('todo' + str(todo))
             # print('done' + str(done))
+            if debugLaby:
+                print(str(self))
+        if debugLaby:
+            print(self.numbers())
             print(str(self))
-        print(self.numbers())
-        print(str(self))
 
 
 
@@ -58,10 +61,10 @@ class Laby2d:
         if x < 0 or x > self.w - 1 or y < 0 or y > self.h - 1:
             return 0
         return ( (1 if x < self.w-1 and self.arr[y][x] & 1 == 1 else 0)
-               + (2 if y < self.h-1 and self.arr[y][x] & 2 == 2 else 0)
-               + (4 if x > 0 and self.arr[y][x-1] & 1 == 1 else 0)
-               + (8 if y > 0 and self.arr[y-1][x] & 2 == 2 else 0)
-               )
+                 + (2 if y < self.h-1 and self.arr[y][x] & 2 == 2 else 0)
+                 + (4 if x > 0 and self.arr[y][x-1] & 1 == 1 else 0)
+                 + (8 if y > 0 and self.arr[y-1][x] & 2 == 2 else 0)
+                 )
 
     def __str__(self):
         p = ' ╶╷┌╴─┐┬╵└│├┘┴┤┼'
@@ -74,8 +77,8 @@ class Laby2d:
 
     def numbers(self):
         return (
-            '\n'.join([' '.join(map(str, line)) for line in self.arr])
-            + '\n')
+                '\n'.join([' '.join(map(str, line)) for line in self.arr])
+                + '\n')
 
     def getMcFunction(self, paths='air', walls='stone', dpath=2, dwall=1):
         dboth = dwall + dpath
@@ -154,10 +157,12 @@ class Laby3d:
                 # print('done')
                 done.append((x, y, z))
             todo = notDone
+            if debugLaby:
+                print(str(self))
+                print('-' * w + '\n')
+        if debugLaby:
+            print(self.numbers())
             print(str(self))
-            print('-' * w + '\n')
-        print(self.numbers())
-        print(str(self))
 
 
 
@@ -186,12 +191,12 @@ class Laby3d:
 
     def numbers(self):
         return (
-            '\n\n'.join(
-                ['\n'.join(
-                    [' '.join(map(str, line)) for line in layer]
-                ) for layer in self.arr]
-            )
-            + '\n')
+                '\n\n'.join(
+                    ['\n'.join(
+                        [' '.join(map(str, line)) for line in layer]
+                    ) for layer in self.arr]
+                )
+                + '\n')
 
     def getMcFunction(self, paths='air', walls='stone', dpath=2, dwall=1):
         dboth = dwall + dpath
@@ -236,13 +241,54 @@ class Laby3d:
         result += f'\ntellraw @s "2D Labyrinth {self.w}x{self.h}x{self.l} erzeugt, Wände {dwall}, Gänge {dpath}."'
         return result
 
+def bridge(direction='x'):
+    length = 30 # will be doubled
+    width = 3   # will be doubled
+    height = 20 # Maximal height at the ends
+    material = 'stone_bricks'
+    result = f'tellraw @s "Brücke mit Länge {length * 2 + 1}, Breite {width * 2 + 1}, Höhe {height} aus {material} in Richtung {direction} erzeugt."'
+    curve = [height*x*x/length/length + 1 for x in range(length+1)]
+    coords = [(i, int(curve[i]), int(curve[i+1])) for i in range(len(curve)-1)]
+    match direction:
+        case 'x':
+            result += f'\nfill ~-{length} ~{-1} ~-{width} ~{length} ~{-1} ~{width} {material}'
+            result += f'\nfill ~-{length} ~{0} ~-{width} ~{length} ~{0} ~-{width} {material}'
+            result += f'\nfill ~-{length} ~{0} ~{width} ~{length} ~{0} ~{width} {material}'
+            for (x, y1, y2) in coords:
+                result += f'\nfill ~-{x} ~-{y1} ~-{width} ~-{x+1} ~-{y2} ~-{width-1} {material}'
+                result += f'\nfill ~-{x} ~-{y1} ~{width} ~-{x+1} ~-{y2} ~{width-1} {material}'
+                result += f'\nfill ~{x} ~-{y1} ~-{width} ~{x+1} ~-{y2} ~-{width-1} {material}'
+                result += f'\nfill ~{x} ~-{y1} ~{width} ~{x+1} ~-{y2} ~{width-1} {material}'
+        case 'y':
+            result += f'\nfill ~-{width} ~{-1} ~-{length} ~{width} ~{-1} ~{length} {material}'
+            result += f'\nfill ~-{width} ~{0} ~-{length} ~-{width} ~{0} ~{length} {material}'
+            result += f'\nfill ~{width} ~{0} ~-{length} ~{width} ~{0} ~{length} {material}'
+            for (x, y1, y2) in coords:
+                result += f'\nfill ~-{width} ~-{y1} ~-{x} ~-{width-1} ~-{y2} ~-{x+1} {material}'
+                result += f'\nfill ~{width} ~-{y1} ~-{x} ~{width-1} ~-{y2} ~-{x+1} {material}'
+                result += f'\nfill ~-{width} ~-{y1} ~{x} ~-{width-1} ~-{y2} ~{x+1} {material}'
+                result += f'\nfill ~{width} ~-{y1} ~{x} ~{width-1} ~-{y2} ~{x+1} {material}'
+        case _:
+            pass
+    result += f'\nsetblock ~ ~-1 ~ mossy_stone_bricks'
+    result = result.replace('~0 ', '~ ')
+    result = result.replace('~-0 ', '~ ')
+    return result + '\n'
+
 
 
 l = Laby3d(7,7,7)
-print(str(l))
+if debugLaby:
+    print(str(l))
 with open(dpPath + "function/labyrinth7x7x7.mcfunction", "w") as file:
     file.writelines(l.getMcFunction())
 
 with open(dpPath + "function/labyrinth7x7x7.txt", "w") as file:
     file.writelines(str(l))
 
+
+with open(dpPath + "function/bridgex.mcfunction", "w") as file:
+    file.writelines(bridge('x'))
+
+with open(dpPath + "function/bridgey.mcfunction", "w") as file:
+    file.writelines(bridge('y'))
