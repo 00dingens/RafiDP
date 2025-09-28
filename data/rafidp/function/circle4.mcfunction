@@ -1,0 +1,25 @@
+tellraw @s "Kreis mit Radius 4"
+setblock ~{sx}{x} ~ ~{sz}{z} white_wool
+setblock ~{sz}{z} ~ ~{sx}{x} white_wool
+setblock ~{sx}{x} ~ ~{sz}{z} white_wool
+setblock ~{sz}{z} ~ ~{sx}{x} white_wool
+setblock ~{sx}{x} ~ ~{sz}{z} white_wool
+setblock ~{sz}{z} ~ ~{sx}{x} white_wool
+setblock ~{sx}{x} ~ ~{sz}{z} white_wool
+setblock ~{sz}{z} ~ ~{sx}{x} white_wool
+setblock ~{sx}{x} ~ ~{sz}{z} white_wool
+setblock ~{sz}{z} ~ ~{sx}{x} white_wool
+setblock ~{sx}{x} ~ ~{sz}{z} white_wool
+setblock ~{sz}{z} ~ ~{sx}{x} white_wool
+setblock ~{sx}{x} ~ ~{sz}{z} white_wool
+setblock ~{sz}{z} ~ ~{sx}{x} white_wool
+setblock ~{sx}{x} ~ ~{sz}{z} white_wool
+setblock ~{sz}{z} ~ ~{sx}{x} white_wool
+setblock ~{sx}{x} ~ ~{sz}{z} white_wool
+setblock ~{sz}{z} ~ ~{sx}{x} white_wool
+setblock ~{sx}{x} ~ ~{sz}{z} white_wool
+setblock ~{sz}{z} ~ ~{sx}{x} white_wool
+setblock ~{sx}{x} ~ ~{sz}{z} white_wool
+setblock ~{sz}{z} ~ ~{sx}{x} white_wool
+setblock ~{sx}{x} ~ ~{sz}{z} white_wool
+setblock ~{sz}{z} ~ ~{sx}{x} white_wool

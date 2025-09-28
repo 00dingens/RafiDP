@@ -1,5 +1,6 @@
 import os
 import random
+from math import *
 
 dpPath = "../data/rafidp/"
 if not os.path.exists(dpPath):
@@ -275,7 +276,23 @@ def bridge(direction='x'):
     result = result.replace('~-0 ', '~ ')
     return result + '\n'
 
+def circleCoordinates(r):
+    c = [0] * r
+    for i in range(100):
+        c[int(sin(i*pi/400)*r)] = int(cos(i*pi/400) * r)
+    c = list(filter(lambda x: x > 0, c))
+    c = list(zip(range(len(c)),c))
+    return c
 
+def circle(r):
+    result = f'tellraw @s "Kreis mit Radius {r}"'
+    cc = circleCoordinates(r)
+    signs = [('',''),('-',''),('','-'),('-','-')]
+    for x, z in cc:
+        for sx, sz in signs:
+            result +='\nsetblock ~{sx}{x} ~ ~{sz}{z} white_wool'
+            result +='\nsetblock ~{sz}{z} ~ ~{sx}{x} white_wool'
+    return result
 
 l = Laby3d(7,7,7)
 if debugLaby:
@@ -292,3 +309,8 @@ with open(dpPath + "function/bridgex.mcfunction", "w") as file:
 
 with open(dpPath + "function/bridgey.mcfunction", "w") as file:
     file.writelines(bridge('y'))
+
+for r in [4,5,6,7,8,10,12,15,20,25,30,40,50]:
+    with open(dpPath + f'function/circle{r}.mcfunction', "w") as file:
+        file.writelines(circle(r))
+
