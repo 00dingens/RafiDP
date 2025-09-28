@@ -290,8 +290,10 @@ def circle(r):
     signs = [('',''),('-',''),('','-'),('-','-')]
     for x, z in cc:
         for sx, sz in signs:
-            result +='\nsetblock ~{sx}{x} ~ ~{sz}{z} white_wool'
-            result +='\nsetblock ~{sz}{z} ~ ~{sx}{x} white_wool'
+            result += f'\nsetblock ~{sx}{x} ~ ~{sz}{z} white_wool'
+            result += f'\nsetblock ~{sz}{z} ~ ~{sx}{x} white_wool'
+    result = result.replace('~0 ', '~ ')
+    result = result.replace('~-0 ', '~ ')
     return result
 
 l = Laby3d(7,7,7)
@@ -310,7 +312,7 @@ with open(dpPath + "function/bridgex.mcfunction", "w") as file:
 with open(dpPath + "function/bridgey.mcfunction", "w") as file:
     file.writelines(bridge('y'))
 
-for r in [4,5,6,7,8,10,12,15,20,25,30,40,50]:
+for r in [4,5,6,7,8,10,12,15,20,25,30,35,40,45,50,60,70,80,90,100]:
     with open(dpPath + f'function/circle{r}.mcfunction', "w") as file:
         file.writelines(circle(r))
 
