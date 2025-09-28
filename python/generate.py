@@ -296,6 +296,40 @@ def circle(r):
     result = result.replace('~-0 ', '~ ')
     return result
 
+def sphereCoordinates(r):
+    c = [[0] * (r+1) for i in range(r+1)]
+    for i in range(100):
+        for j in range(100):
+            w1 = i*pi/200
+            w2 = j*pi/300
+            x = int(cos(w1)*sin(w2)*r)
+            y = int(sin(w1)*sin(w2)*r)
+            z = int(cos(w2)*r)
+            #print(f' {w1} {w2}  ({x},{y},{z})')
+            c[x][y] = max(c[x][y], z)
+    #for l in c:
+    #    print(l)
+    c = list(map(lambda l: list(filter(lambda x: x > 0, l)), c))
+    return c
+
+def sphere(r):
+    result = f'tellraw @s "Kugel mit Radius {r}"'
+    cc = sphereCoordinates(r)
+    s = ['', '-']
+    signs = [(x,y,z) for x in s for y in s for z in s]
+    axes = [[0,1,2],[0,2,1],[1,0,2],[1,2,0],[2,0,1],[2,1,0]]
+    for x in range(len(cc)):
+        for y in range(len(cc[x])):
+            z = cc[x][y]
+            p = (x,y,z)
+            #print(p)
+            for sx, sy, sz in signs:
+                for a1, a2, a3 in axes:
+                    result += f'\nsetblock ~{sx}{p[a1]} ~{sy}{p[a2]} ~{sz}{p[a3]} white_wool'
+    result = result.replace('~0 ', '~ ')
+    result = result.replace('~-0 ', '~ ')
+    return result
+
 l = Laby3d(7,7,7)
 if debugLaby:
     print(str(l))
@@ -315,4 +349,9 @@ with open(dpPath + "function/bridgey.mcfunction", "w") as file:
 for r in [4,5,6,7,8,10,12,15,20,25,30,35,40,45,50,60,70,80,90,100]:
     with open(dpPath + f'function/circle{r}.mcfunction', "w") as file:
         file.writelines(circle(r))
+
+for r in [5,7,10,12,15,20,25,30,35,40,45,50]:
+    with open(dpPath + f'function/ball{r}.mcfunction', "w") as file:
+        file.writelines(sphere(r))
+
 
