@@ -330,7 +330,7 @@ def sphere(r):
     result = result.replace('~-0 ', '~ ')
     return result
 
-def vulkan(r=20, maxH=105): # radius of rim
+def vulkan(r=20, maxH=90): # radius of rim
     result = f'tellraw @s "Vulkan mit Radius {r} und Höhe {maxH}"'
     cx,cy = 4*r, 4*r # center in array
     l = [[0] * (cy*2+1) for i in range(cx*2+1)]
@@ -341,15 +341,21 @@ def vulkan(r=20, maxH=105): # radius of rim
     # fill crater with smooth funnel
     for y in range(-r*2,r*2):
         for x in range(-r*2,r*2):
-            #l[cx+x][cy+y] = maxH - abs(int(sqrt(x*x+y*y)-r))
-            pass
-
+            l[cx+x][cy+y] = maxH - abs(int(sqrt(x*x+y*y)-r)) - 5 - int((sqrt(x*x+y*y)-r)*0.5)
     # generate rim points rim points
-    for (startRadius, startHeight, slope) in [(r, maxH,0.9),(r*1.5, maxH-r*0.5,0.7),(r*2, maxH-r,0.5),(r*2.5, maxH-r*1.4,0.4),(r*3, maxH-r*1.6,0.3)]:
+    for (startRadius, startHeight, slope) in [
+            (r,     maxH,    0.9),
+            (r*1.3, maxH-3,  0.7),
+            (r*1.6, maxH-6,  0.5),
+            (r*1.9, maxH-9,  0.4),
+            (r*2.2, maxH-12, 0.35),
+            (r*2.5, maxH-15, 0.3),
+            (r*2.8, maxH-18, 0.25)
+        ]:
         for w in range(int(wCount*startRadius)):
             wa = w*2*pi/(wCount*startRadius)
-            rx = sin(wa)*startRadius + random.random()*rimRand
-            ry = cos(wa)*startRadius + random.random()*rimRand
+            rx = sin(wa)*startRadius + random.random()*rimRand-rimRand/2
+            ry = cos(wa)*startRadius + random.random()*rimRand-rimRand/2
             while abs(rx) < cx-ddd and abs(ry) < cy-ddd:
                 wa += random.random()*(2*rumpel) - rumpel
                 rx += sin(wa)
@@ -359,13 +365,11 @@ def vulkan(r=20, maxH=105): # radius of rim
                     for dy in range(-ddd,ddd):
                         dd = sqrt(dx**2+dy**2)
                         l[cx+int(rx+dx)][cy+int(ry+dy)] = max(l[cx+int(rx+dx)][cy+int(ry+dy)], int(h-dd))
-                        if dd == 0:
-                            pass#l[cx+int(rx+dx)][cy+int(ry+dy)] = int(h-dd + 10)
     #debug output
     for y in range(cy*2+1):
         for x in range(cx*2+1):
             if l[x][y] > 0:
-                result += f'\nfill ~{x-cx} ~{l[x][y]} ~{y-cy} ~{x-cx} ~{max(l[x][y]-10,1)} ~{y-cy} stone'
+                result += f'\nfill ~{x-cx} {l[x][y]} ~{y-cy} ~{x-cx} {max(l[x][y]-10,1)} ~{y-cy} stone'
             match l[x][y]:
                 case 0:
                     print('?', end='')
@@ -386,33 +390,88 @@ def vulkan(r=20, maxH=105): # radius of rim
                 case _:
                     print(' ', end='')
         print('')
+    for y in range(-r*2,r*2):
+        for x in range(-r*2,r*2):
+            if sqrt(x*x+y*y) < r and l[cx+x][cy+y] < maxH - 4:
+                result += f'\nsetblock ~{x} {maxH-4} ~{y} lava'
+    result = result.replace('~0 ', '~ ')
+    result = result.replace('~-0 ', '~ ')
+    return result + '\n'
+
+def erde():
+    result = f'tellraw @s "100x100 erde"'
+    for x in range(-50, 50, 10):
+        for y in range(-50,50, 10):
+            result += f'\nfill ~{x} 0 ~{y} ~{x+9} 60 ~{y+9} stone'
+            result += f'\nfill ~{x} 61 ~{y} ~{x+9} 64 ~{y+9} grass_block'
+            result += f'\nfill ~{x} 65 ~{y} ~{x+9} 300 ~{y+9} air'
+    return result
+
+def wasser():
+    result = f'tellraw @s "100x100 wasser"'
+    for x in range(-50, 50, 10):
+        for y in range(-50,50, 10):
+            result += f'\nfill ~{x} 0 ~{y} ~{x+9} 60 ~{y+9} stone'
+            result += f'\nfill ~{x} 61 ~{y} ~{x+9} 64 ~{y+9} water'
+            result += f'\nfill ~{x} 65 ~{y} ~{x+9} 300 ~{y+9} air'
     return result
 
 
-l = Laby3d(7,7,7)
-if debugLaby:
-    print(str(l))
-with open(dpPath + "function/labyrinth7x7x7.mcfunction", "w") as file:
-    file.writelines(l.getMcFunction())
+if False:
+    l = Laby3d(7,7,7)
+    if debugLaby:
+        print(str(l))
+    with open(dpPath + "function/labyrinth7x7x7.mcfunction", "w") as file:
+        file.writelines(l.getMcFunction())
 
-with open(dpPath + "function/labyrinth7x7x7.txt", "w") as file:
-    file.writelines(str(l))
+    with open(dpPath + "function/labyrinth7x7x7.txt", "w") as file:
+        file.writelines(str(l))
+
+if False:
+    with open(dpPath + "function/bridgex.mcfunction", "w") as file:
+        file.writelines(bridge('x'))
+
+    with open(dpPath + "function/bridgey.mcfunction", "w") as file:
+        file.writelines(bridge('y'))
+
+if False:
+    for r in [4,5,6,7,8,10,12,15,20,25,30,35,40,45,50,60,70,80,90,100]:
+        with open(dpPath + f'function/circle{r}.mcfunction', "w") as file:
+            file.writelines(circle(r))
+
+    for r in [5,7,10,12,15,20,25,30,35,40,45,50]:
+        with open(dpPath + f'function/ball{r}.mcfunction', "w") as file:
+            file.writelines(sphere(r))
+
+if False:
+    v = vulkan(10, 80)
+    with open(dpPath + "function/vulkan10.mcfunction", "w") as file:
+        file.writelines(v)
+    v = v.replace('stone', 'air')
+    v = v.replace('lava', 'air')
+    with open(dpPath + "function/vulkan10air.mcfunction", "w") as file:
+        file.writelines(v)
+
+    v = vulkan(20, 90)
+    with open(dpPath + "function/vulkan20.mcfunction", "w") as file:
+        file.writelines(v)
+    v = v.replace('stone', 'air')
+    v = v.replace('lava', 'air')
+    with open(dpPath + "function/vulkan20air.mcfunction", "w") as file:
+        file.writelines(v)
+
+    v = vulkan(30, 100)
+    with open(dpPath + "function/vulkan30.mcfunction", "w") as file:
+        file.writelines(v)
+    v = v.replace('stone', 'air')
+    v = v.replace('lava', 'air')
+    with open(dpPath + "function/vulkan30air.mcfunction", "w") as file:
+        file.writelines(v)
 
 
-with open(dpPath + "function/bridgex.mcfunction", "w") as file:
-    file.writelines(bridge('x'))
+if True:
+    with open(dpPath + "function/erde100x100.mcfunction", "w") as file:
+        file.writelines(erde())
 
-with open(dpPath + "function/bridgey.mcfunction", "w") as file:
-    file.writelines(bridge('y'))
-
-for r in [4,5,6,7,8,10,12,15,20,25,30,35,40,45,50,60,70,80,90,100]:
-    with open(dpPath + f'function/circle{r}.mcfunction', "w") as file:
-        file.writelines(circle(r))
-
-for r in [5,7,10,12,15,20,25,30,35,40,45,50]:
-    with open(dpPath + f'function/ball{r}.mcfunction', "w") as file:
-        file.writelines(sphere(r))
-
-with open(dpPath + "function/vulkan20.mcfunction", "w") as file:
-    print(len(vulkan(20,105)))
-    file.writelines(vulkan(20,105))
+    with open(dpPath + "function/wasser100x100.mcfunction", "w") as file:
+        file.writelines(wasser())
