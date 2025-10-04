@@ -7,6 +7,7 @@ if not os.path.exists(dpPath):
     os.makedirs(dpPath + "function")
 
 debugLaby = False
+generateEverything = True
 
 class Laby2d:
     def __init__(self, w, h):
@@ -417,7 +418,7 @@ def wasser():
     return result
 
 
-if False:
+if generateEverything:
     l = Laby3d(7,7,7)
     if debugLaby:
         print(str(l))
@@ -427,14 +428,14 @@ if False:
     with open(dpPath + "function/labyrinth7x7x7.txt", "w") as file:
         file.writelines(str(l))
 
-if False:
+if generateEverything:
     with open(dpPath + "function/bridgex.mcfunction", "w") as file:
         file.writelines(bridge('x'))
 
     with open(dpPath + "function/bridgey.mcfunction", "w") as file:
         file.writelines(bridge('y'))
 
-if False:
+if generateEverything:
     for r in [4,5,6,7,8,10,12,15,20,25,30,35,40,45,50,60,70,80,90,100]:
         with open(dpPath + f'function/circle{r}.mcfunction', "w") as file:
             file.writelines(circle(r))
@@ -443,7 +444,7 @@ if False:
         with open(dpPath + f'function/ball{r}.mcfunction', "w") as file:
             file.writelines(sphere(r))
 
-if False:
+if generateEverything:
     v = vulkan(10, 80)
     with open(dpPath + "function/vulkan10.mcfunction", "w") as file:
         file.writelines(v)
@@ -469,7 +470,7 @@ if False:
         file.writelines(v)
 
 
-if True:
+if generateEverything:
     with open(dpPath + "function/erde100x100.mcfunction", "w") as file:
         file.writelines(erde())
 
