@@ -402,18 +402,18 @@ def erde():
     result = f'tellraw @s "100x100 erde"'
     for x in range(-50, 50, 10):
         for y in range(-50,50, 10):
-            result += f'\nfill ~{x} 0 ~{y} ~{x+9} 60 ~{y+9} stone'
-            result += f'\nfill ~{x} 61 ~{y} ~{x+9} 64 ~{y+9} grass_block'
-            result += f'\nfill ~{x} 65 ~{y} ~{x+9} 300 ~{y+9} air'
+            result += f'\nfill ~{x} 0 ~{y} ~{x+9} 55 ~{y+9} stone'
+            result += f'\nfill ~{x} 56 ~{y} ~{x+9} 62 ~{y+9} grass_block'
+            result += f'\nfill ~{x} 63 ~{y} ~{x+9} 300 ~{y+9} air'
     return result
 
 def wasser():
     result = f'tellraw @s "100x100 wasser"'
     for x in range(-50, 50, 10):
         for y in range(-50,50, 10):
-            result += f'\nfill ~{x} 0 ~{y} ~{x+9} 60 ~{y+9} stone'
-            result += f'\nfill ~{x} 61 ~{y} ~{x+9} 64 ~{y+9} water'
-            result += f'\nfill ~{x} 65 ~{y} ~{x+9} 300 ~{y+9} air'
+            result += f'\nfill ~{x} 0 ~{y} ~{x+9} 50 ~{y+9} stone'
+            result += f'\nfill ~{x} 51 ~{y} ~{x+9} 62 ~{y+9} water'
+            result += f'\nfill ~{x} 63 ~{y} ~{x+9} 300 ~{y+9} air'
     return result
 
 
