@@ -2,7 +2,7 @@ import os
 import random
 from math import *
 
-dpPath = "../data/rafidp/"
+dpPath = "data/rafidp/"
 if not os.path.exists(dpPath):
     os.makedirs(dpPath + "function")
 
@@ -330,6 +330,65 @@ def sphere(r):
     result = result.replace('~-0 ', '~ ')
     return result
 
+def vulkan(r=20, maxH=105): # radius of rim
+    result = f'tellraw @s "Vulkan mit Radius {r} und Höhe {maxH}"'
+    cx,cy = 4*r, 4*r # center in array
+    l = [[0] * (cy*2+1) for i in range(cx*2+1)]
+    wCount = 1 # point for each 2π blocks
+    rimRand = 3 # random shift of rim points
+    rumpel = 0.15
+    ddd = 7 # width of pen
+    # fill crater with smooth funnel
+    for y in range(-r*2,r*2):
+        for x in range(-r*2,r*2):
+            #l[cx+x][cy+y] = maxH - abs(int(sqrt(x*x+y*y)-r))
+            pass
+
+    # generate rim points rim points
+    for (startRadius, startHeight, slope) in [(r, maxH,0.9),(r*1.5, maxH-r*0.5,0.7),(r*2, maxH-r,0.5),(r*2.5, maxH-r*1.4,0.4),(r*3, maxH-r*1.6,0.3)]:
+        for w in range(int(wCount*startRadius)):
+            wa = w*2*pi/(wCount*startRadius)
+            rx = sin(wa)*startRadius + random.random()*rimRand
+            ry = cos(wa)*startRadius + random.random()*rimRand
+            while abs(rx) < cx-ddd and abs(ry) < cy-ddd:
+                wa += random.random()*(2*rumpel) - rumpel
+                rx += sin(wa)
+                ry += cos(wa)
+                h = startHeight - (sqrt(rx*rx+ry*ry)-r)*slope
+                for dx in range(-ddd,ddd):
+                    for dy in range(-ddd,ddd):
+                        dd = sqrt(dx**2+dy**2)
+                        l[cx+int(rx+dx)][cy+int(ry+dy)] = max(l[cx+int(rx+dx)][cy+int(ry+dy)], int(h-dd))
+                        if dd == 0:
+                            pass#l[cx+int(rx+dx)][cy+int(ry+dy)] = int(h-dd + 10)
+    #debug output
+    for y in range(cy*2+1):
+        for x in range(cx*2+1):
+            if l[x][y] > 0:
+                result += f'\nfill ~{x-cx} ~{l[x][y]} ~{y-cy} ~{x-cx} ~{max(l[x][y]-10,1)} ~{y-cy} stone'
+            match l[x][y]:
+                case 0:
+                    print('?', end='')
+                case _ if l[x][y] < 40:
+                    print('.', end='')
+                case _ if l[x][y] < 50:
+                    print('"', end='')
+                case _ if l[x][y] < 60:
+                    print('*', end='')
+                case _ if l[x][y] < 70:
+                    print('o', end='')
+                case _ if l[x][y] < 80:
+                    print('X', end='')
+                case _ if l[x][y] < 90:
+                    print('%', end='')
+                case _ if l[x][y] >= 90:
+                    print('#', end='')
+                case _:
+                    print(' ', end='')
+        print('')
+    return result
+
+
 l = Laby3d(7,7,7)
 if debugLaby:
     print(str(l))
@@ -354,4 +413,6 @@ for r in [5,7,10,12,15,20,25,30,35,40,45,50]:
     with open(dpPath + f'function/ball{r}.mcfunction', "w") as file:
         file.writelines(sphere(r))
 
-
+with open(dpPath + "function/vulkan20.mcfunction", "w") as file:
+    print(len(vulkan(20,105)))
+    file.writelines(vulkan(20,105))
