@@ -331,10 +331,10 @@ def sphere(r):
     result = result.replace('~-0 ', '~ ')
     return result
 
-def vulkan(r=20, maxH=90): # radius of rim
+def vulkan(r=20, maxH=30, stretch=1): # radius of rim
     result = f'tellraw @s "Vulkan mit Radius {r} und Höhe {maxH}"'
     cx,cy = 4*r, 4*r # center in array
-    l = [[0] * (cy*2+1) for i in range(cx*2+1)]
+    l = [[-60.0] * (cy*2+1) for i in range(cx*2+1)]
     wCount = 1 # point for each 2π blocks
     rimRand = 3 # random shift of rim points
     rumpel = 0.15
@@ -342,7 +342,9 @@ def vulkan(r=20, maxH=90): # radius of rim
     # fill crater with smooth funnel
     for y in range(-r*2,r*2):
         for x in range(-r*2,r*2):
-            l[cx+x][cy+y] = maxH - abs(int(sqrt(x*x+y*y)-r)) - 5 - int((sqrt(x*x+y*y)-r)*0.5)
+            d = sqrt(x*x+y*y)
+            if d<r-3:
+                l[cx+x][cy+y] = (maxH - abs(d-r) - 5 - (d-r)*0.5) * stretch
     # generate rim points rim points
     for (startRadius, startHeight, slope) in [
             (r,     maxH,    0.9),
@@ -361,40 +363,42 @@ def vulkan(r=20, maxH=90): # radius of rim
                 wa += random.random()*(2*rumpel) - rumpel
                 rx += sin(wa)
                 ry += cos(wa)
-                h = startHeight - (sqrt(rx*rx+ry*ry)-r)*slope
+                h = (startHeight - (sqrt(rx*rx+ry*ry)-r)*slope) * stretch
                 for dx in range(-ddd,ddd):
                     for dy in range(-ddd,ddd):
-                        dd = sqrt(dx**2+dy**2)
-                        l[cx+int(rx+dx)][cy+int(ry+dy)] = max(l[cx+int(rx+dx)][cy+int(ry+dy)], int(h-dd))
+                        dd = sqrt(dx**2+dy**2)*stretch
+                        l[cx+int(rx+dx)][cy+int(ry+dy)] = max(l[cx+int(rx+dx)][cy+int(ry+dy)], (h-dd))
     #debug output
     for y in range(cy*2+1):
         for x in range(cx*2+1):
-            if l[x][y] > 0:
-                result += f'\nfill ~{x-cx} {l[x][y]} ~{y-cy} ~{x-cx} {max(l[x][y]-10,1)} ~{y-cy} stone'
+            if l[x][y] > -60:
+                result += f'\nfill ~{x-cx} ~{int(l[x][y])} ~{y-cy} ~{x-cx} ~{max(int(l[x][y]-10),-60)} ~{y-cy} stone'
             match l[x][y]:
-                case 0:
+                case -60.0:
                     print('?', end='')
-                case _ if l[x][y] < 40:
+                case _ if l[x][y] < -10:
                     print('.', end='')
-                case _ if l[x][y] < 50:
-                    print('"', end='')
-                case _ if l[x][y] < 60:
+                case _ if l[x][y] < 0:
+                    print('-', end='')
+                case _ if l[x][y] < 10:
                     print('*', end='')
-                case _ if l[x][y] < 70:
+                case _ if l[x][y] < 20:
                     print('o', end='')
-                case _ if l[x][y] < 80:
+                case _ if l[x][y] < 30:
                     print('X', end='')
-                case _ if l[x][y] < 90:
+                case _ if l[x][y] < 40:
                     print('%', end='')
-                case _ if l[x][y] >= 90:
+                case _ if l[x][y] < 50:
                     print('#', end='')
+                case _ if l[x][y] >= 50:
+                    print('@', end='')
                 case _:
                     print(' ', end='')
         print('')
     for y in range(-r*2,r*2):
         for x in range(-r*2,r*2):
-            if sqrt(x*x+y*y) < r and l[cx+x][cy+y] < maxH - 4:
-                result += f'\nsetblock ~{x} {maxH-4} ~{y} lava'
+            if sqrt(x*x+y*y) < r and l[cx+x][cy+y] < (maxH - 4)*stretch:
+                result += f'\nsetblock ~{x} ~{int((maxH-4)*stretch)} ~{y} lava'
     result = result.replace('~0 ', '~ ')
     result = result.replace('~-0 ', '~ ')
     return result + '\n'
@@ -445,7 +449,7 @@ if generateEverything:
             file.writelines(sphere(r))
 
 if generateEverything:
-    v = vulkan(10, 80)
+    v = vulkan(10, 20)
     with open(dpPath + "function/vulkan10.mcfunction", "w") as file:
         file.writelines(v)
     v = v.replace('stone', 'air')
@@ -453,7 +457,7 @@ if generateEverything:
     with open(dpPath + "function/vulkan10air.mcfunction", "w") as file:
         file.writelines(v)
 
-    v = vulkan(20, 90)
+    v = vulkan(20, 30)
     with open(dpPath + "function/vulkan20.mcfunction", "w") as file:
         file.writelines(v)
     v = v.replace('stone', 'air')
@@ -461,12 +465,28 @@ if generateEverything:
     with open(dpPath + "function/vulkan20air.mcfunction", "w") as file:
         file.writelines(v)
 
-    v = vulkan(30, 100)
+    v = vulkan(30, 40)
     with open(dpPath + "function/vulkan30.mcfunction", "w") as file:
         file.writelines(v)
     v = v.replace('stone', 'air')
     v = v.replace('lava', 'air')
     with open(dpPath + "function/vulkan30air.mcfunction", "w") as file:
+        file.writelines(v)
+
+    v = vulkan(30, 40, 2)
+    with open(dpPath + "function/vulkan30high.mcfunction", "w") as file:
+        file.writelines(v)
+    v = v.replace('stone', 'air')
+    v = v.replace('lava', 'air')
+    with open(dpPath + "function/vulkan30highair.mcfunction", "w") as file:
+        file.writelines(v)
+
+    v = vulkan(30, 40, 3)
+    with open(dpPath + "function/vulkan30higher.mcfunction", "w") as file:
+        file.writelines(v)
+    v = v.replace('stone', 'air')
+    v = v.replace('lava', 'air')
+    with open(dpPath + "function/vulkan30higherair.mcfunction", "w") as file:
         file.writelines(v)
 
 
