@@ -1,7 +1,12 @@
 # Hier wird das Datapack gebaut
-datapack: rafidp
+all: rafidp.zip
+
+rafidp.zip: rafidp
 	zip rafidp.zip data
 
-rafidp: python/generate.py
-	python3 python/generate.py
+rafidp: python/generate.py venv
+	./venv/bin/python3 python/generate.py
 
+venv:
+	python3 -m venv venv
+	./venv/bin/pip install -r requirements.txt

@@ -1,6 +1,7 @@
 import os
 import random
 from math import *
+from numpy import *
 
 dpPath = "data/rafidp/"
 if not os.path.exists(dpPath):
