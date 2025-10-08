@@ -1,14 +1,14 @@
 import os
 import random
 from math import *
-from numpy import *
+import numpy as np
 
 dpPath = "data/rafidp/"
 if not os.path.exists(dpPath):
     os.makedirs(dpPath + "function")
 
 debugLaby = False
-generateEverything = True
+generateEverything = False
 
 class Laby2d:
     def __init__(self, w, h):
@@ -109,14 +109,6 @@ class Laby2d:
         result = result.replace('~0 ', '~ ')
         result += f'\ntellraw @s "2D Labyrinth {self.w}x{self.h} erzeugt, Wände {dwall}, Gänge {dpath}."'
         return result
-
-l = Laby2d(13,13)
-with open(dpPath + "function/labyrinth13x13.mcfunction", "w") as file:
-    file.writelines(l.getMcFunction())
-
-with open(dpPath + "function/labyrinth13x13.txt", "w") as file:
-    file.writelines(str(l))
-
 
 
 class Laby3d:
@@ -422,6 +414,65 @@ def wasser():
             result += f'\nfill ~{x} 63 ~{y} ~{x+9} 300 ~{y+9} air'
     return result
 
+# r1: center radius of the whole ring
+# r2: thickness of the ring
+# r3: thickness of the tubes
+#   => outer radius = r1+r2+r3
+# rounds: how many strands
+# twist: will be divided by rounds, so better non-divisible
+# wall: wall thickness (reduces only inner space)
+def knot(r1=20, r2=10, r3=4, rounds=3, twist=8, wall=1):
+    rOuter = r1 + r2 + r3
+    a = np.zeros((2 * rOuter + 1, 2 * (r2 + r3) + 1, 2 * rOuter + 1), dtype=np.float32)
+    # center
+    cx, cy, cz = map(lambda d: d // 2, a.shape)
+    # indices
+    i, j, k = np.indices(a.shape, dtype=np.float32)
+    # centered indices
+    x, y, z = i - cx, j - cy, k - cz
+    # radial coordinates in the large ring
+    theta, radius = np.atan2(z, x), np.sqrt(x**2 + z**2)
+    twists = [(
+        (np.cos((theta+ro*np.pi*2)*twist/rounds)*r2 + r1) * np.cos(theta),
+        np.sin((theta+ro*np.pi*2)*twist/rounds)*r2,
+        (np.cos((theta+ro*np.pi*2)*twist/rounds)*r2 + r1) * np.sin(theta)
+    ) for ro in range(rounds)]
+    ds = []
+    # distance to each twist
+    for tx, ty, tz in twists:
+        dxt, dyt, dzt = x - tx, y - ty, z - tz
+        d = np.sqrt(dxt*dxt + dyt*dyt + dzt*dzt)
+        ds.append(d)
+    ds = np.stack(ds)
+    # minimal distance
+    mins = np.min(ds, axis=0)
+    result = f'tellraw @s "Knoten mit r1={r1} r2={r2} r3={r3} und {rounds}/{twist}"'
+    # if within wall thickness, set block
+    r3a, r3b = r3-wall, r3
+    counter=0
+    for xx in range(mins.shape[0]):
+        for yy in range(mins.shape[1]):
+            for zz in range(mins.shape[2]):
+                if r3a < mins[xx,yy,zz] < r3b:
+                    result += f'\nsetblock ~{xx-cx} ~{yy-cy} ~{zz-cz} white_wool'
+                    counter += 1
+    result = result.replace('~0 ', '~ ')
+    result = result.replace('~-0 ', '~ ')
+    print(f'Knot r1={r1} r2={r2} r3={r3} und {rounds}/{twist} => {counter} lines')
+    return result + '\n'
+
+# ---------------------------------------------------------------------------
+
+
+
+if generateEverything:
+    l = Laby2d(13,13)
+    with open(dpPath + "function/labyrinth13x13.mcfunction", "w") as file:
+        file.writelines(l.getMcFunction())
+
+    with open(dpPath + "function/labyrinth13x13.txt", "w") as file:
+        file.writelines(str(l))
+
 
 if generateEverything:
     l = Laby3d(7,7,7)
@@ -497,3 +548,15 @@ if generateEverything:
 
     with open(dpPath + "function/wasser100x100.mcfunction", "w") as file:
         file.writelines(wasser())
+
+if generateEverything:
+    for r1,r2,r3,r,t,w in [
+        (10,8,9,2,3,2),
+        (20,10,4,3,8,2),
+        (20,5,4,2,5,1.5),
+        (30,8,6,3,5,1.5),
+        (30,10,7,4,5,2),
+        (50,10,5,5,9,1),
+    ]:
+        with open(dpPath + f'function/knot_{r1}_{r2}_{r3}_{r}_{t}.mcfunction', "w") as file:
+            file.writelines(knot(r1,r2,r3,r,t,w))
