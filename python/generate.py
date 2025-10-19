@@ -9,6 +9,7 @@ if not os.path.exists(dpPath):
 
 debugLaby = False
 generateEverything = False
+np.set_printoptions(linewidth=500)
 
 class Laby2d:
     def __init__(self, w, h):
@@ -461,6 +462,46 @@ def knot(r1=20, r2=10, r3=4, rounds=3, twist=8, wall=1):
     print(f'Knot r1={r1} r2={r2} r3={r3} und {rounds}/{twist} => {counter} lines')
     return result + '\n'
 
+def mandel(p=(-0.5,0), w=50, h=50, z=1, cycles=20, rotate=20):
+    result = f'tellraw @s "Mandel {w}x{h} bei {p} z={z}, rotate={rotate}°, {cycles} iterationen"'
+    pal = [n + '_concrete' for n in ['red', 'orange', 'yellow', 'lime', 'light_blue', 'cyan', 'blue', 'purple', 'pink']]
+    # length der basis vektors
+    r = 3 / min(w, h) / z
+    # basisvektoren
+    rotate = rotate * np.pi / 180
+    (v1, v2) = complex(cos(rotate)*r, sin(rotate)*r), complex(cos(rotate+pi/2)*r, sin(rotate+pi/2)*r)
+    # point left bottom
+    p0 = complex(*p) - v1*w/2 - v2*h/2
+    # iterations
+    it = np.zeros((w,h), dtype=np.int16)
+    # indices
+    ix,iy = np.indices(it.shape, dtype=np.float32)
+    # koordinaten
+    pxy = ix*v1 + iy*v2 + p0
+    x = np.copy(pxy)
+    # current point
+    x = np.copy(pxy)
+    for i in range(cycles):
+        ab = np.absolute(x)
+        ab[np.isnan(ab)] = 4
+        gt = (np.sign(np.sign(ab-2)-.5)+1)/2
+        lt = -gt + 1
+        #print(lt)
+        it = gt * it + lt * i
+        x = x*x + pxy
+        x[np.isnan(x)] = complex(4,4)
+    print(it)
+    it[np.isnan(it)] = 0
+    for row in range(it.shape[0]):
+        for col in range(it.shape[1]):
+            mat = pal[int(it[row,col])%len(pal)]
+            print('#=+-+='[int(it[row,col])%6], end='')
+            result += f'\nsetblock ~{row-w//2} ~-1 ~{col-h//2} {mat}'
+        print()
+    result = result.replace('~0 ', '~ ')
+    result = result.replace('~-0 ', '~ ')
+    return result
+
 # ---------------------------------------------------------------------------
 
 
@@ -560,3 +601,12 @@ if generateEverything:
     ]:
         with open(dpPath + f'function/knot_{r1}_{r2}_{r3}_{r}_{t}.mcfunction', "w") as file:
             file.writelines(knot(r1,r2,r3,r,t,w))
+
+for name, p, w, h, z, c, r in [
+    ('1',(-0.5,0), 50,50, 1, 20, 0.1),
+    ('1g',(-0.5,0), 100,100, 1, 50, 0),
+    ('2',(-0.65463514,-0.460303789), 50,50, 30, 100, 0),
+]:
+    print('mandel_'+name)
+    with open(dpPath + f'function/mandel_{name}.mcfunction', "w") as file:
+        file.writelines(mandel(p, w, h, z, c, r))
