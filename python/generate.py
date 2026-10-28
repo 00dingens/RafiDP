@@ -3,12 +3,14 @@ import random
 from math import *
 import numpy as np
 
-dpPath = "data/rafidp/"
-if not os.path.exists(dpPath):
-    os.makedirs(dpPath + "function")
+dpPath = "data/"
+for namespace in ["burg", "haus", "mathe", "rafidp", "rund", "stepper", "strasse", "vulkan"]:
+    if not os.path.exists(dpPath + namespace + "/"):
+        os.makedirs(dpPath + namespace + "/function")
 
 debugLaby = False
-generateEverything = False
+debugVulkan = False
+generateEverything = True
 np.set_printoptions(linewidth=500)
 
 class Laby2d:
@@ -367,28 +369,30 @@ def vulkan(r=20, maxH=30, stretch=1): # radius of rim
         for x in range(cx*2+1):
             if l[x][y] > -60:
                 result += f'\nfill ~{x-cx} ~{int(l[x][y])} ~{y-cy} ~{x-cx} ~{max(int(l[x][y]-10),-60)} ~{y-cy} stone'
-            match l[x][y]:
-                case -60.0:
-                    print('?', end='')
-                case _ if l[x][y] < -10:
-                    print('.', end='')
-                case _ if l[x][y] < 0:
-                    print('-', end='')
-                case _ if l[x][y] < 10:
-                    print('*', end='')
-                case _ if l[x][y] < 20:
-                    print('o', end='')
-                case _ if l[x][y] < 30:
-                    print('X', end='')
-                case _ if l[x][y] < 40:
-                    print('%', end='')
-                case _ if l[x][y] < 50:
-                    print('#', end='')
-                case _ if l[x][y] >= 50:
-                    print('@', end='')
-                case _:
-                    print(' ', end='')
-        print('')
+            if debugVulkan:
+                match l[x][y]:
+                    case -60.0:
+                        print('?', end='')
+                    case _ if l[x][y] < -10:
+                        print('.', end='')
+                    case _ if l[x][y] < 0:
+                        print('-', end='')
+                    case _ if l[x][y] < 10:
+                        print('*', end='')
+                    case _ if l[x][y] < 20:
+                        print('o', end='')
+                    case _ if l[x][y] < 30:
+                        print('X', end='')
+                    case _ if l[x][y] < 40:
+                        print('%', end='')
+                    case _ if l[x][y] < 50:
+                        print('#', end='')
+                    case _ if l[x][y] >= 50:
+                        print('@', end='')
+                    case _:
+                        print(' ', end='')
+        if debugVulkan:
+            print('')
     for y in range(-r*2,r*2):
         for x in range(-r*2,r*2):
             if sqrt(x*x+y*y) < r and l[cx+x][cy+y] < (maxH - 4)*stretch:
@@ -486,18 +490,18 @@ def mandel(p=(-0.5,0), w=50, h=50, z=1, cycles=20, rotate=20):
         ab[np.isnan(ab)] = 4
         gt = (np.sign(np.sign(ab-2)-.5)+1)/2
         lt = -gt + 1
-        #print(lt)
+        # print(lt)
         it = gt * it + lt * i
         x = x*x + pxy
         x[np.isnan(x)] = complex(4,4)
-    print(it)
+    # print(it)
     it[np.isnan(it)] = 0
     for row in range(it.shape[0]):
         for col in range(it.shape[1]):
             mat = pal[int(it[row,col])%len(pal)]
-            print('#=+-+='[int(it[row,col])%6], end='')
+            # print('#=+-+='[int(it[row,col])%6], end='')
             result += f'\nsetblock ~{row-w//2} ~-1 ~{col-h//2} {mat}'
-        print()
+        # print()
     result = result.replace('~0 ', '~ ')
     result = result.replace('~-0 ', '~ ')
     return result
@@ -508,10 +512,10 @@ def mandel(p=(-0.5,0), w=50, h=50, z=1, cycles=20, rotate=20):
 
 if generateEverything:
     l = Laby2d(13,13)
-    with open(dpPath + "function/labyrinth13x13.mcfunction", "w") as file:
+    with open(dpPath + "mathe/function/labyrinth13x13.mcfunction", "w") as file:
         file.writelines(l.getMcFunction())
 
-    with open(dpPath + "function/labyrinth13x13.txt", "w") as file:
+    with open(dpPath + "mathe/function/labyrinth13x13.txt", "w") as file:
         file.writelines(str(l))
 
 
@@ -519,75 +523,75 @@ if generateEverything:
     l = Laby3d(7,7,7)
     if debugLaby:
         print(str(l))
-    with open(dpPath + "function/labyrinth7x7x7.mcfunction", "w") as file:
+    with open(dpPath + "mathe/function/labyrinth7x7x7.mcfunction", "w") as file:
         file.writelines(l.getMcFunction())
 
-    with open(dpPath + "function/labyrinth7x7x7.txt", "w") as file:
+    with open(dpPath + "mathe/function/labyrinth7x7x7.txt", "w") as file:
         file.writelines(str(l))
 
 if generateEverything:
-    with open(dpPath + "function/bridgex.mcfunction", "w") as file:
+    with open(dpPath + "rafidp/function/bridgex.mcfunction", "w") as file:
         file.writelines(bridge('x'))
 
-    with open(dpPath + "function/bridgey.mcfunction", "w") as file:
+    with open(dpPath + "rafidp/function/bridgey.mcfunction", "w") as file:
         file.writelines(bridge('y'))
 
 if generateEverything:
     for r in [4,5,6,7,8,10,12,15,20,25,30,35,40,45,50,60,70,80,90,100]:
-        with open(dpPath + f'function/circle{r}.mcfunction', "w") as file:
+        with open(dpPath + f'rund/function/circle{r}.mcfunction', "w") as file:
             file.writelines(circle(r))
 
     for r in [5,7,10,12,15,20,25,30,35,40,45,50]:
-        with open(dpPath + f'function/ball{r}.mcfunction', "w") as file:
+        with open(dpPath + f'rund/function/ball{r}.mcfunction', "w") as file:
             file.writelines(sphere(r))
 
 if generateEverything:
     v = vulkan(10, 20)
-    with open(dpPath + "function/vulkan10.mcfunction", "w") as file:
+    with open(dpPath + "vulkan/function/vulkan10.mcfunction", "w") as file:
         file.writelines(v)
     v = v.replace('stone', 'air')
     v = v.replace('lava', 'air')
-    with open(dpPath + "function/vulkan10air.mcfunction", "w") as file:
+    with open(dpPath + "vulkan/function/vulkan10air.mcfunction", "w") as file:
         file.writelines(v)
 
     v = vulkan(20, 30)
-    with open(dpPath + "function/vulkan20.mcfunction", "w") as file:
+    with open(dpPath + "vulkan/function/vulkan20.mcfunction", "w") as file:
         file.writelines(v)
     v = v.replace('stone', 'air')
     v = v.replace('lava', 'air')
-    with open(dpPath + "function/vulkan20air.mcfunction", "w") as file:
+    with open(dpPath + "vulkan/function/vulkan20air.mcfunction", "w") as file:
         file.writelines(v)
 
     v = vulkan(30, 40)
-    with open(dpPath + "function/vulkan30.mcfunction", "w") as file:
+    with open(dpPath + "vulkan/function/vulkan30.mcfunction", "w") as file:
         file.writelines(v)
     v = v.replace('stone', 'air')
     v = v.replace('lava', 'air')
-    with open(dpPath + "function/vulkan30air.mcfunction", "w") as file:
+    with open(dpPath + "vulkan/function/vulkan30air.mcfunction", "w") as file:
         file.writelines(v)
 
     v = vulkan(30, 40, 2)
-    with open(dpPath + "function/vulkan30high.mcfunction", "w") as file:
+    with open(dpPath + "vulkan/function/vulkan30high.mcfunction", "w") as file:
         file.writelines(v)
     v = v.replace('stone', 'air')
     v = v.replace('lava', 'air')
-    with open(dpPath + "function/vulkan30highair.mcfunction", "w") as file:
+    with open(dpPath + "vulkan/function/vulkan30highair.mcfunction", "w") as file:
         file.writelines(v)
 
     v = vulkan(30, 40, 3)
-    with open(dpPath + "function/vulkan30higher.mcfunction", "w") as file:
+    with open(dpPath + "vulkan/function/vulkan30higher.mcfunction", "w") as file:
         file.writelines(v)
     v = v.replace('stone', 'air')
     v = v.replace('lava', 'air')
-    with open(dpPath + "function/vulkan30higherair.mcfunction", "w") as file:
+    with open(dpPath + "vulkan/function/vulkan30higherair.mcfunction", "w") as file:
         file.writelines(v)
 
 
 if generateEverything:
-    with open(dpPath + "function/erde100x100.mcfunction", "w") as file:
+    with open(dpPath + "rafidp/function/erde100x100.mcfunction", "w") as file:
         file.writelines(erde())
 
-    with open(dpPath + "function/wasser100x100.mcfunction", "w") as file:
+    with open(dpPath + "rafidp/function/wasser100x100.mcfunction", "w") as file:
         file.writelines(wasser())
 
 if generateEverything:
@@ -599,7 +603,7 @@ if generateEverything:
         (30,10,7,4,5,2),
         (50,10,5,5,9,1),
     ]:
-        with open(dpPath + f'function/knot_{r1}_{r2}_{r3}_{r}_{t}.mcfunction', "w") as file:
+        with open(dpPath + f'mathe/function/knot_{r1}_{r2}_{r3}_{r}_{t}.mcfunction', "w") as file:
             file.writelines(knot(r1,r2,r3,r,t,w))
 
 for name, p, w, h, z, c, r in [
@@ -608,5 +612,5 @@ for name, p, w, h, z, c, r in [
     ('2',(-0.65463514,-0.460303789), 50,50, 30, 100, 0),
 ]:
     print('mandel_'+name)
-    with open(dpPath + f'function/mandel_{name}.mcfunction', "w") as file:
+    with open(dpPath + f'mathe/function/mandel_{name}.mcfunction', "w") as file:
         file.writelines(mandel(p, w, h, z, c, r))

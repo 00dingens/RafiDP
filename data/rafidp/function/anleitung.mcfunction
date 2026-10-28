@@ -1,0 +1,6 @@
+tellraw @a [{"text":"RafiDP - Anleitung","color":"green"}]
+tellraw @s [{"text":"Für diese Anleitung schreibe: "},{"text":"/function rafidp:anleitung"}]
+tellraw @s [{"text":"## Stepper ##"}]
+tellraw @s [{"text":"Ein Teleport System, das sich selbst erweitert."}]
+tellraw @s [{"text":"Gehe genau zu 0,0 und schreibe:"}]
+tellraw @s [{"text":"/function stepper:stepper100","color":"blue"}]

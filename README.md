@@ -27,7 +27,7 @@ Es gibt 2 Wege:
 
 # Inhalt
 
-## rafidp:stepper100
+## stepper:stepper100
 
 Erzeugt ein Teleportationsnetz, das sich beim Verwenden von selbst vergrößert.
 

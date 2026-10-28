@@ -17,14 +17,14 @@ fill ~-32 ~16 ~-32 ~47 ~19 ~47 air
 fill ~-32 ~20 ~-32 ~47 ~3 ~47 air
 
 
-execute positioned ~ ~ ~ run function rafidp:strasse_kreuzung
+execute positioned ~ ~ ~ run function strasse:strasse_kreuzung
 
-execute positioned ~-32 ~ ~ run function rafidp:strasse_x
-execute positioned ~-16 ~ ~ run function rafidp:strasse_x
-execute positioned ~16 ~ ~ run function rafidp:strasse_x
-execute positioned ~32 ~ ~ run function rafidp:strasse_x
+execute positioned ~-32 ~ ~ run function strasse:strasse_x
+execute positioned ~-16 ~ ~ run function strasse:strasse_x
+execute positioned ~16 ~ ~ run function strasse:strasse_x
+execute positioned ~32 ~ ~ run function strasse:strasse_x
 
-execute positioned ~ ~ ~-32 run function rafidp:strasse_y
-execute positioned ~ ~ ~-16 run function rafidp:strasse_y
-execute positioned ~ ~ ~16 run function rafidp:strasse_y
-execute positioned ~ ~ ~32 run function rafidp:strasse_y
+execute positioned ~ ~ ~-32 run function strasse:strasse_y
+execute positioned ~ ~ ~-16 run function strasse:strasse_y
+execute positioned ~ ~ ~16 run function strasse:strasse_y
+execute positioned ~ ~ ~32 run function strasse:strasse_y
