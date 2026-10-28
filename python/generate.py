@@ -10,7 +10,7 @@ for namespace in ["burg", "haus", "mathe", "rafidp", "rund", "stepper", "strasse
 
 debugLaby = False
 debugVulkan = False
-generateEverything = True
+generateEverything = False
 np.set_printoptions(linewidth=500)
 
 class Laby2d:
@@ -88,7 +88,9 @@ class Laby2d:
 
     def getMcFunction(self, paths='air', walls='stone', dpath=2, dwall=1):
         dboth = dwall + dpath
-        result = f'tellraw @s "Du brauchst vorher"\ntellraw @s "/fill ~ ~-3 ~ ~{self.w * dboth + dwall - 1} ~-1 ~{self.h * dboth + dwall - 1} {walls}"'
+
+        command = f'/fill ~ ~-3 ~ ~{self.w * dboth + dwall - 1} ~-1 ~{self.h * dboth + dwall - 1} {walls}'
+        result = 'tellraw @s [{"text":"Du brauchst vorher ","color":"white"},{"text":"'+command+'","color":"blue"}]'
         # horizontal
         for j in range(self.h):
             start = -1
@@ -198,7 +200,8 @@ class Laby3d:
 
     def getMcFunction(self, paths='air', walls='stone', dpath=2, dwall=1):
         dboth = dwall + dpath
-        result = f'tellraw @s "Du brauchst vorher"\ntellraw @s "/fill ~ ~-1 ~ ~{self.w * dboth + dwall - 1} ~{-(self.h * dboth + dwall)} ~{self.l * dboth + dwall - 1} {walls}"'
+        command = f'/fill ~ ~-1 ~ ~{self.w * dboth + dwall - 1} ~{-(self.h * dboth + dwall)} ~{self.l * dboth + dwall - 1} {walls}'
+        result = 'tellraw @s [{"text":"Du brauchst vorher ","color":"white"},{"text":"'+command+'","color":"blue"}]'
         # x direction
         for k in range(self.l):
             kk = k * dboth + dwall
@@ -364,11 +367,13 @@ def vulkan(r=20, maxH=30, stretch=1): # radius of rim
                     for dy in range(-ddd,ddd):
                         dd = sqrt(dx**2+dy**2)*stretch
                         l[cx+int(rx+dx)][cy+int(ry+dy)] = max(l[cx+int(rx+dx)][cy+int(ry+dy)], (h-dd))
-    #debug output
     for y in range(cy*2+1):
         for x in range(cx*2+1):
             if l[x][y] > -60:
-                result += f'\nfill ~{x-cx} ~{int(l[x][y])} ~{y-cy} ~{x-cx} ~{max(int(l[x][y]-10),-60)} ~{y-cy} stone'
+                if x==cx and y==cy:
+                    result += f'\nfill ~{x-cx} ~{int(l[x][y])} ~{y-cy} ~{x-cx} ~3 ~{y-cy} stone'
+                else:
+                    result += f'\nfill ~{x-cx} ~{int(l[x][y])} ~{y-cy} ~{x-cx} ~{max(int(l[x][y]-10),-60)} ~{y-cy} stone'
             if debugVulkan:
                 match l[x][y]:
                     case -60.0:
@@ -399,10 +404,11 @@ def vulkan(r=20, maxH=30, stretch=1): # radius of rim
                 result += f'\nsetblock ~{x} ~{int((maxH-4)*stretch)} ~{y} lava'
     result = result.replace('~0 ', '~ ')
     result = result.replace('~-0 ', '~ ')
+    result += f'\nfill ~ ~ ~ ~ ~2 ~ air'
     return result + '\n'
 
 def erde():
-    result = f'tellraw @s "100x100 erde"'
+    result = f'tellraw @s "100x100 Erde"'
     for x in range(-50, 50, 10):
         for y in range(-50,50, 10):
             result += f'\nfill ~{x} 0 ~{y} ~{x+9} 55 ~{y+9} stone'
@@ -411,7 +417,7 @@ def erde():
     return result
 
 def wasser():
-    result = f'tellraw @s "100x100 wasser"'
+    result = f'tellraw @s "100x100 Wasser"'
     for x in range(-50, 50, 10):
         for y in range(-50,50, 10):
             result += f'\nfill ~{x} 0 ~{y} ~{x+9} 50 ~{y+9} stone'
@@ -511,6 +517,7 @@ def mandel(p=(-0.5,0), w=50, h=50, z=1, cycles=20, rotate=20):
 
 
 if generateEverything:
+    print('Labyrinth 2D')
     l = Laby2d(13,13)
     with open(dpPath + "mathe/function/labyrinth13x13.mcfunction", "w") as file:
         file.writelines(l.getMcFunction())
@@ -520,6 +527,7 @@ if generateEverything:
 
 
 if generateEverything:
+    print('Labyrinth 3D')
     l = Laby3d(7,7,7)
     if debugLaby:
         print(str(l))
@@ -530,64 +538,46 @@ if generateEverything:
         file.writelines(str(l))
 
 if generateEverything:
-    with open(dpPath + "rafidp/function/bridgex.mcfunction", "w") as file:
+    print('Bridges')
+    with open(dpPath + "strasse/function/bridgex.mcfunction", "w") as file:
         file.writelines(bridge('x'))
 
-    with open(dpPath + "rafidp/function/bridgey.mcfunction", "w") as file:
+    with open(dpPath + "strasse/function/bridgey.mcfunction", "w") as file:
         file.writelines(bridge('y'))
 
 if generateEverything:
+    print('Circles')
     for r in [4,5,6,7,8,10,12,15,20,25,30,35,40,45,50,60,70,80,90,100]:
         with open(dpPath + f'rund/function/circle{r}.mcfunction', "w") as file:
             file.writelines(circle(r))
 
+    print('Balls')
     for r in [5,7,10,12,15,20,25,30,35,40,45,50]:
         with open(dpPath + f'rund/function/ball{r}.mcfunction', "w") as file:
             file.writelines(sphere(r))
 
 if generateEverything:
-    v = vulkan(10, 20)
-    with open(dpPath + "vulkan/function/vulkan10.mcfunction", "w") as file:
-        file.writelines(v)
-    v = v.replace('stone', 'air')
-    v = v.replace('lava', 'air')
-    with open(dpPath + "vulkan/function/vulkan10air.mcfunction", "w") as file:
-        file.writelines(v)
-
-    v = vulkan(20, 30)
-    with open(dpPath + "vulkan/function/vulkan20.mcfunction", "w") as file:
-        file.writelines(v)
-    v = v.replace('stone', 'air')
-    v = v.replace('lava', 'air')
-    with open(dpPath + "vulkan/function/vulkan20air.mcfunction", "w") as file:
-        file.writelines(v)
-
-    v = vulkan(30, 40)
-    with open(dpPath + "vulkan/function/vulkan30.mcfunction", "w") as file:
-        file.writelines(v)
-    v = v.replace('stone', 'air')
-    v = v.replace('lava', 'air')
-    with open(dpPath + "vulkan/function/vulkan30air.mcfunction", "w") as file:
-        file.writelines(v)
-
-    v = vulkan(30, 40, 2)
-    with open(dpPath + "vulkan/function/vulkan30high.mcfunction", "w") as file:
-        file.writelines(v)
-    v = v.replace('stone', 'air')
-    v = v.replace('lava', 'air')
-    with open(dpPath + "vulkan/function/vulkan30highair.mcfunction", "w") as file:
-        file.writelines(v)
-
-    v = vulkan(30, 40, 3)
-    with open(dpPath + "vulkan/function/vulkan30higher.mcfunction", "w") as file:
-        file.writelines(v)
-    v = v.replace('stone', 'air')
-    v = v.replace('lava', 'air')
-    with open(dpPath + "vulkan/function/vulkan30higherair.mcfunction", "w") as file:
-        file.writelines(v)
+    print('Vulkane')
+    vulkanParameters = [
+        ( 5, 10, 1, "5"),
+        (10, 20, 1, "10"),
+        (20, 30, 1, "20"),
+        (30, 40, 1, "30"),
+        (30, 40, 2, "30high"),
+        (30, 40, 3, "30higher"),
+    ]
+    for (r, maxH, stretch, name) in vulkanParameters:
+        v = vulkan(r, maxH, stretch)
+        with open(dpPath + "vulkan/function/vulkan" + name + ".mcfunction", "w") as file:
+            file.writelines(v)
+        v = v.replace('stone', 'air')
+        v = v.replace('lava', 'air')
+        with open(dpPath + "vulkan/function/vulkan" + name + "air.mcfunction", "w") as file:
+            file.writelines(v)
 
 
 if generateEverything:
+    print('Erde & Wasser')
     with open(dpPath + "rafidp/function/erde100x100.mcfunction", "w") as file:
         file.writelines(erde())
 
@@ -595,6 +585,7 @@ if generateEverything:
         file.writelines(wasser())
 
 if generateEverything:
+    print('Knots')
     for r1,r2,r3,r,t,w in [
         (10,8,9,2,3,2),
         (20,10,4,3,8,2),
@@ -606,11 +597,13 @@ if generateEverything:
         with open(dpPath + f'mathe/function/knot_{r1}_{r2}_{r3}_{r}_{t}.mcfunction', "w") as file:
             file.writelines(knot(r1,r2,r3,r,t,w))
 
-for name, p, w, h, z, c, r in [
-    ('1',(-0.5,0), 50,50, 1, 20, 0.1),
-    ('1g',(-0.5,0), 100,100, 1, 50, 0),
-    ('2',(-0.65463514,-0.460303789), 50,50, 30, 100, 0),
-]:
-    print('mandel_'+name)
-    with open(dpPath + f'mathe/function/mandel_{name}.mcfunction', "w") as file:
-        file.writelines(mandel(p, w, h, z, c, r))
+if generateEverything:
+    print('Mandel')
+    for name, p, w, h, z, c, r in [
+        ('1',(-0.5,0), 50,50, 1, 20, 0.1),
+        ('1g',(-0.5,0), 100,100, 1, 50, 0),
+        ('2',(-0.65463514,-0.460303789), 50,50, 30, 100, 0),
+    ]:
+        print('  mandel_'+name)
+        with open(dpPath + f'mathe/function/mandel_{name}.mcfunction', "w") as file:
+            file.writelines(mandel(p, w, h, z, c, r))
