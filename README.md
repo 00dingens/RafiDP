@@ -27,6 +27,8 @@ Es gibt 2 Wege:
 
 # Inhalt
 
+Anleitung gibt es bei installiertem Datapack mit `/function rafidp:anleitung` .
+
 ## stepper:stepper100
 
 Erzeugt ein Teleportationsnetz, das sich beim Verwenden von selbst vergrößert.
