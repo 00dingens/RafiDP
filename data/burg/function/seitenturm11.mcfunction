@@ -1,3 +1,4 @@
+# Von unten nach oben
 fill ~ ~-20 ~ ~10 ~-30 ~10 deepslate_bricks hollow
 fill ~ ~-10 ~ ~10 ~-20 ~10 deepslate_bricks hollow
 fill ~ ~ ~ ~10 ~-10 ~10 deepslate_bricks hollow
@@ -14,6 +15,7 @@ fill ~ ~90 ~ ~10 ~100 ~10 deepslate_bricks hollow
 fill ~ ~100 ~ ~10 ~110 ~10 deepslate_bricks hollow
 fill ~ ~110 ~ ~10 ~120 ~10 deepslate_bricks hollow
 
+#Fackel bei 5,5 in jeder Etage
 setblock ~5 ~-29 ~5 torch
 setblock ~5 ~-19 ~5 torch
 setblock ~5 ~-9 ~5 torch
@@ -30,6 +32,7 @@ setblock ~5 ~91 ~5 torch
 setblock ~5 ~101 ~5 torch
 setblock ~5 ~111 ~5 torch
 
+#Fackeln unten außen
 setblock ~2 ~3 ~-1 wall_torch[facing=north]
 setblock ~8 ~3 ~-1 wall_torch[facing=north]
 setblock ~2 ~3 ~11 wall_torch[facing=south]

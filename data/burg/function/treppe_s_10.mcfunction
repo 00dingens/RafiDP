@@ -1,3 +1,4 @@
+# Treppe 11 breit von 0,0 bis 9,9 steigend richtung süden
 fill ~-5 ~ ~ ~5 ~ ~ stone_stairs[facing=south]
 fill ~-5 ~1 ~1 ~5 ~1 ~1 stone_stairs[facing=south]
 fill ~-5 ~2 ~2 ~5 ~2 ~2 stone_stairs[facing=south]

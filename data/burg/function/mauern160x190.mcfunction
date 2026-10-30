@@ -1,6 +1,7 @@
+# Boden
 fill ~-80 ~ ~10 ~80 ~ ~200 deepslate_tiles
 
-
+# Äußere Mauern 3 Schichten von außen nach innen (rechts, links, vorne, hinten)
 fill ~-80 ~-30 ~10 ~-80 ~120 ~200 deepslate
 fill ~80 ~-30 ~10 ~80 ~120 ~200 deepslate
 fill ~-80 ~-30 ~10 ~80 ~120 ~10 deepslate
@@ -16,7 +17,7 @@ fill ~78 ~-30 ~10 ~78 ~120 ~200 deepslate
 fill ~-80 ~-30 ~12 ~80 ~120 ~12 deepslate
 fill ~-80 ~-30 ~198 ~80 ~120 ~198 deepslate
 
-
+# Innere Mauern 3 Schichten von innen nach außen (rechts, links, vorne, hinten)
 fill ~-60 ~-30 ~20 ~-60 ~120 ~180 deepslate
 fill ~60 ~-30 ~20 ~60 ~120 ~180 deepslate
 fill ~-62 ~-30 ~20 ~62 ~120 ~20 deepslate

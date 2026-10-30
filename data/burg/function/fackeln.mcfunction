@@ -1,3 +1,5 @@
+
+#fackeln in seitenwänden
 setblock ~70 ~1 ~25 torch
 setblock ~-70 ~1 ~25 torch
 setblock ~70 ~1 ~35 torch
@@ -32,6 +34,8 @@ setblock ~70 ~1 ~175 torch
 setblock ~-70 ~1 ~175 torch
 setblock ~70 ~1 ~185 torch
 setblock ~-70 ~1 ~185 torch
+
+#fackeln in vorder und rückwänden
 setblock ~-65 ~1 ~190 torch
 setblock ~-65 ~1 ~17 torch
 setblock ~-55 ~1 ~190 torch
@@ -60,6 +64,8 @@ setblock ~55 ~1 ~190 torch
 setblock ~55 ~1 ~17 torch
 setblock ~65 ~1 ~190 torch
 setblock ~65 ~1 ~17 torch
+
+#fackeln im Burginneren (unten, innerer boden)
 setblock ~-55 ~1 ~25 torch
 setblock ~-55 ~21 ~25 torch
 setblock ~-55 ~1 ~35 torch

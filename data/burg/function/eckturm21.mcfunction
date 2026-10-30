@@ -1,3 +1,4 @@
+# Von unten nach oben
 fill ~ ~-20 ~ ~20 ~-30 ~20 deepslate_bricks hollow
 fill ~ ~-10 ~ ~20 ~-20 ~20 deepslate_bricks hollow
 fill ~ ~ ~ ~20 ~-10 ~20 deepslate_bricks hollow
@@ -14,8 +15,10 @@ fill ~ ~90 ~ ~20 ~100 ~20 deepslate_bricks hollow
 fill ~ ~100 ~ ~20 ~110 ~20 deepslate_bricks hollow
 fill ~ ~110 ~ ~20 ~120 ~20 deepslate_bricks hollow
 fill ~ ~120 ~ ~20 ~130 ~20 deepslate_bricks hollow
+# Dicke ober-etage
 fill ~-5 ~130 ~-5 ~25 ~140 ~25 deepslate_bricks hollow
 
+#Fackel bei 5,5 in jeder Etage
 setblock ~5 ~-29 ~5 torch
 setblock ~5 ~-19 ~5 torch
 setblock ~5 ~-9 ~5 torch
@@ -33,6 +36,7 @@ setblock ~5 ~101 ~5 torch
 setblock ~5 ~111 ~5 torch
 setblock ~5 ~121 ~5 torch
 
+#Fackel bei 5,15 in jeder Etage
 setblock ~5 ~-29 ~15 torch
 setblock ~5 ~-19 ~15 torch
 setblock ~5 ~-9 ~15 torch
@@ -50,6 +54,7 @@ setblock ~5 ~101 ~15 torch
 setblock ~5 ~111 ~15 torch
 setblock ~5 ~121 ~15 torch
 
+#Fackel bei 15,5 in jeder Etage
 setblock ~15 ~-29 ~5 torch
 setblock ~15 ~-19 ~5 torch
 setblock ~15 ~-9 ~5 torch
@@ -67,6 +72,7 @@ setblock ~15 ~101 ~5 torch
 setblock ~15 ~111 ~5 torch
 setblock ~15 ~121 ~5 torch
 
+#Fackel bei 15,15 in jeder Etage
 setblock ~15 ~-29 ~15 torch
 setblock ~15 ~-19 ~15 torch
 setblock ~15 ~-9 ~15 torch
@@ -84,6 +90,7 @@ setblock ~15 ~101 ~15 torch
 setblock ~15 ~111 ~15 torch
 setblock ~15 ~121 ~15 torch
 
+#Fackeln in oberster Etage
 setblock ~1 ~131 ~1 torch
 setblock ~10 ~131 ~1 torch
 setblock ~19 ~131 ~1 torch
@@ -94,6 +101,7 @@ setblock ~1 ~131 ~19 torch
 setblock ~10 ~131 ~19 torch
 setblock ~19 ~131 ~19 torch
 
+#Fackeln unten außen
 setblock ~2 ~3 ~-1 wall_torch[facing=north]
 setblock ~6 ~3 ~-1 wall_torch[facing=north]
 setblock ~14 ~3 ~-1 wall_torch[facing=north]
