@@ -17,3 +17,13 @@ execute positioned ~-4 ~1 ~11 run function burg:treppe_s_10
 execute positioned ~4 ~1 ~11 run function burg:treppe_s_10
 execute positioned ~-4 ~11 ~21 run function burg:treppe_s_10
 execute positioned ~4 ~11 ~21 run function burg:treppe_s_10
+
+#Fackeln im Treppengang
+setblock ~9 ~8 ~14 wall_torch[facing=west]
+setblock ~9 ~13 ~19 wall_torch[facing=west]
+setblock ~9 ~18 ~24 wall_torch[facing=west]
+setblock ~9 ~23 ~29 wall_torch[facing=west]
+setblock ~-9 ~8 ~14 wall_torch[facing=east]
+setblock ~-9 ~13 ~19 wall_torch[facing=east]
+setblock ~-9 ~18 ~24 wall_torch[facing=east]
+setblock ~-9 ~23 ~29 wall_torch[facing=east]

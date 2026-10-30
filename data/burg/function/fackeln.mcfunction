@@ -227,7 +227,6 @@ setblock ~-15 ~21 ~165 torch
 setblock ~-15 ~1 ~175 torch
 setblock ~-15 ~21 ~175 torch
 setblock ~-5 ~1 ~25 torch
-setblock ~-5 ~21 ~25 torch
 setblock ~-5 ~1 ~35 torch
 setblock ~-5 ~21 ~35 torch
 setblock ~-5 ~1 ~45 torch
@@ -259,7 +258,6 @@ setblock ~-5 ~21 ~165 torch
 setblock ~-5 ~1 ~175 torch
 setblock ~-5 ~21 ~175 torch
 setblock ~5 ~1 ~25 torch
-setblock ~5 ~21 ~25 torch
 setblock ~5 ~1 ~35 torch
 setblock ~5 ~21 ~35 torch
 setblock ~5 ~1 ~45 torch
