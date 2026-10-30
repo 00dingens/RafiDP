@@ -14,12 +14,27 @@ fill ~ ~90 ~ ~10 ~100 ~10 deepslate_bricks hollow
 fill ~ ~100 ~ ~10 ~110 ~10 deepslate_bricks hollow
 fill ~ ~110 ~ ~10 ~120 ~10 deepslate_bricks hollow
 
+setblock ~5 ~-29 ~5 torch
+setblock ~5 ~-19 ~5 torch
+setblock ~5 ~-9 ~5 torch
+setblock ~5 ~1 ~5 torch
+setblock ~5 ~11 ~5 torch
+setblock ~5 ~21 ~5 torch
+setblock ~5 ~31 ~5 torch
+setblock ~5 ~41 ~5 torch
+setblock ~5 ~51 ~5 torch
+setblock ~5 ~61 ~5 torch
+setblock ~5 ~71 ~5 torch
+setblock ~5 ~81 ~5 torch
+setblock ~5 ~91 ~5 torch
+setblock ~5 ~101 ~5 torch
+setblock ~5 ~111 ~5 torch
 
-setblock ~3 ~3 ~-1 wall_torch[facing=north]
-setblock ~7 ~3 ~-1 wall_torch[facing=north]
-setblock ~3 ~3 ~11 wall_torch[facing=south]
-setblock ~7 ~3 ~11 wall_torch[facing=south]
-setblock ~11 ~3 ~3 wall_torch[facing=east]
-setblock ~11 ~3 ~7 wall_torch[facing=east]
-setblock ~-1 ~3 ~3 wall_torch[facing=west]
-setblock ~-1 ~3 ~7 wall_torch[facing=west]
+setblock ~2 ~3 ~-1 wall_torch[facing=north]
+setblock ~8 ~3 ~-1 wall_torch[facing=north]
+setblock ~2 ~3 ~11 wall_torch[facing=south]
+setblock ~8 ~3 ~11 wall_torch[facing=south]
+setblock ~11 ~3 ~2 wall_torch[facing=east]
+setblock ~11 ~3 ~8 wall_torch[facing=east]
+setblock ~-1 ~3 ~2 wall_torch[facing=west]
+setblock ~-1 ~3 ~8 wall_torch[facing=west]
