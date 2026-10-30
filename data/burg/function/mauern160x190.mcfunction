@@ -1,5 +1,9 @@
-# Boden
+# Boden unten
 fill ~-80 ~ ~10 ~80 ~ ~200 deepslate_tiles
+# Boden Saal
+fill ~-60 ~18 ~20 ~60 ~18 ~180 deepslate_tiles
+fill ~-60 ~19 ~20 ~60 ~19 ~180 deepslate_tiles
+fill ~-60 ~20 ~20 ~60 ~20 ~180 deepslate_tiles
 
 # Äußere Mauern 3 Schichten von außen nach innen (rechts, links, vorne, hinten)
 fill ~-80 ~-30 ~10 ~-80 ~120 ~200 deepslate
