@@ -45,6 +45,68 @@ execute positioned ~10 ~-1 ~195 run function burg:turm11
 fill ~-80 ~121 ~10 ~80 ~121 ~200 air replace polished_deepslate_wall
 fill ~-80 ~122 ~10 ~80 ~122 ~200 air replace polished_deepslate_wall
 
+#Zimmer East
+execute positioned ~40 ~19 ~30 run function burg:zimmer_east
+execute positioned ~40 ~19 ~60 run function burg:zimmer_east
+execute positioned ~40 ~19 ~90 run function burg:zimmer_east
+execute positioned ~40 ~19 ~120 run function burg:zimmer_east
+execute positioned ~40 ~19 ~150 run function burg:zimmer_east
+
+execute positioned ~40 ~29 ~30 run function burg:zimmer_east
+execute positioned ~40 ~29 ~60 run function burg:zimmer_east
+execute positioned ~40 ~29 ~90 run function burg:zimmer_east
+execute positioned ~40 ~29 ~120 run function burg:zimmer_east
+execute positioned ~40 ~29 ~150 run function burg:zimmer_east
+
+execute positioned ~40 ~39 ~30 run function burg:zimmer_east
+execute positioned ~40 ~39 ~60 run function burg:zimmer_east
+execute positioned ~40 ~39 ~90 run function burg:zimmer_east
+execute positioned ~40 ~39 ~120 run function burg:zimmer_east
+execute positioned ~40 ~39 ~150 run function burg:zimmer_east
+
+execute positioned ~40 ~49 ~30 run function burg:zimmer_east
+execute positioned ~40 ~49 ~60 run function burg:zimmer_east
+execute positioned ~40 ~49 ~90 run function burg:zimmer_east
+execute positioned ~40 ~49 ~120 run function burg:zimmer_east
+execute positioned ~40 ~49 ~150 run function burg:zimmer_east
+
+execute positioned ~40 ~59 ~30 run function burg:zimmer_east
+execute positioned ~40 ~59 ~60 run function burg:zimmer_east
+execute positioned ~40 ~59 ~90 run function burg:zimmer_east
+execute positioned ~40 ~59 ~120 run function burg:zimmer_east
+execute positioned ~40 ~59 ~150 run function burg:zimmer_east
+
+#Zimmer West
+execute positioned ~-60 ~19 ~30 run function burg:zimmer_west
+execute positioned ~-60 ~19 ~60 run function burg:zimmer_west
+execute positioned ~-60 ~19 ~90 run function burg:zimmer_west
+execute positioned ~-60 ~19 ~120 run function burg:zimmer_west
+execute positioned ~-60 ~19 ~150 run function burg:zimmer_west
+
+execute positioned ~-60 ~29 ~30 run function burg:zimmer_west
+execute positioned ~-60 ~29 ~60 run function burg:zimmer_west
+execute positioned ~-60 ~29 ~90 run function burg:zimmer_west
+execute positioned ~-60 ~29 ~120 run function burg:zimmer_west
+execute positioned ~-60 ~29 ~150 run function burg:zimmer_west
+
+execute positioned ~-60 ~39 ~30 run function burg:zimmer_west
+execute positioned ~-60 ~39 ~60 run function burg:zimmer_west
+execute positioned ~-60 ~39 ~90 run function burg:zimmer_west
+execute positioned ~-60 ~39 ~120 run function burg:zimmer_west
+execute positioned ~-60 ~39 ~150 run function burg:zimmer_west
+
+execute positioned ~-60 ~49 ~30 run function burg:zimmer_west
+execute positioned ~-60 ~49 ~60 run function burg:zimmer_west
+execute positioned ~-60 ~49 ~90 run function burg:zimmer_west
+execute positioned ~-60 ~49 ~120 run function burg:zimmer_west
+execute positioned ~-60 ~49 ~150 run function burg:zimmer_west
+
+execute positioned ~-60 ~59 ~30 run function burg:zimmer_west
+execute positioned ~-60 ~59 ~60 run function burg:zimmer_west
+execute positioned ~-60 ~59 ~90 run function burg:zimmer_west
+execute positioned ~-60 ~59 ~120 run function burg:zimmer_west
+execute positioned ~-60 ~59 ~150 run function burg:zimmer_west
+
 
 tellraw @s "Stepper"
 # Stepper wiederherstellen
