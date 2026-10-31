@@ -13,17 +13,20 @@ if not os.path.exists(dpPath):
 
 print('Fackeln')
 with open(dpPath + f'fackeln.mcfunction', "w") as file:
-  file.writelines(f'\n#fackeln in seitenwänden\n')
-  for i in range(25,186,10):
-    file.writelines(f'setblock ~70 ~1 ~{i} torch\n')
-    file.writelines(f'setblock ~-70 ~1 ~{i} torch\n')
-  file.writelines(f'\n#fackeln in vorder und rückwänden\n')
-  for i in range(-65,66,10):
-    file.writelines(f'setblock ~{i} ~1 ~{190} torch\n')
-    file.writelines(f'setblock ~{i} ~1 ~{17} torch\n')
-  file.writelines(f'\n#fackeln im Burginneren (unten, innerer boden)\n')
-  for x in range(-55,56,10):
-    for z in range(25, 176, 10):
-        file.writelines(f'setblock ~{x} ~1 ~{z} torch\n')
-        if abs(x) + z > 30:
-          file.writelines(f'setblock ~{x} ~21 ~{z} torch\n')
+  #file.writelines(f'\n#fackeln in seitenwänden\n')
+  #for i in range(25,186,10):
+  #  file.writelines(f'setblock ~70 ~1 ~{i} torch\n')
+  #  file.writelines(f'setblock ~-70 ~1 ~{i} torch\n')
+  #file.writelines(f'\n#fackeln in vorder und rückwänden\n')
+  #for i in range(-65,66,10):
+  #  file.writelines(f'setblock ~{i} ~1 ~{190} torch\n')
+  #  file.writelines(f'setblock ~{i} ~1 ~{17} torch\n')
+  file.writelines(f'\n#fackeln im Burginneren (unten, rundgang, innerer boden)\n')
+  #for x in range(-55,56,10):
+  #  for z in range(25, 176, 10):
+  for x in range(-75,76,10):
+    for z in range(15, 196, 10):
+      file.writelines(f'setblock ~{x} ~1 ~{z} torch\n')
+      file.writelines(f'setblock ~{x} ~122 ~{z} torch\n')
+      if abs(x) + z > 30 and abs(x)<60 and 20 < z < 180:
+        file.writelines(f'setblock ~{x} ~21 ~{z} torch\n')
