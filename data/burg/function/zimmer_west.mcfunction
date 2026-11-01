@@ -12,7 +12,7 @@ setblock ~-15 ~2 ~16 oak_door[half=upper,facing=north,open=true]
 
 #Gang
 fill ~25 ~ ~ ~20 ~ ~30 deepslate_bricks
-fill ~25 ~1 ~ ~25 ~1 ~30 spruce_fence
+fill ~25 ~1 ~ ~25 ~1 ~30 deepslate_brick_wall
 setblock ~22 ~1 ~5 torch
 setblock ~22 ~1 ~25 torch
 

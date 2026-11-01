@@ -107,6 +107,29 @@ execute positioned ~-60 ~59 ~90 run function burg:zimmer_west
 execute positioned ~-60 ~59 ~120 run function burg:zimmer_west
 execute positioned ~-60 ~59 ~150 run function burg:zimmer_west
 
+# Säulen
+execute positioned ~-18 ~-1 ~42 run function burg:pillar7
+execute positioned ~-18 ~-1 ~62 run function burg:pillar7
+execute positioned ~-18 ~-1 ~82 run function burg:pillar7
+execute positioned ~-18 ~-1 ~102 run function burg:pillar7
+execute positioned ~12 ~-1 ~42 run function burg:pillar7
+execute positioned ~12 ~-1 ~62 run function burg:pillar7
+execute positioned ~12 ~-1 ~82 run function burg:pillar7
+execute positioned ~12 ~-1 ~102 run function burg:pillar7
+
+#Laternen
+execute positioned ~-32 ~19 ~35 run function burg:laterne
+execute positioned ~-32 ~19 ~55 run function burg:laterne
+execute positioned ~-32 ~19 ~75 run function burg:laterne
+execute positioned ~-32 ~19 ~95 run function burg:laterne
+execute positioned ~-32 ~19 ~115 run function burg:laterne
+execute positioned ~-32 ~19 ~135 run function burg:laterne
+execute positioned ~32 ~19 ~35 run function burg:laterne
+execute positioned ~32 ~19 ~55 run function burg:laterne
+execute positioned ~32 ~19 ~75 run function burg:laterne
+execute positioned ~32 ~19 ~95 run function burg:laterne
+execute positioned ~32 ~19 ~115 run function burg:laterne
+execute positioned ~32 ~19 ~135 run function burg:laterne
 
 tellraw @s "Stepper"
 # Stepper wiederherstellen
