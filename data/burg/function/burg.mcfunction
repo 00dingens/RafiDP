@@ -131,6 +131,11 @@ execute positioned ~32 ~19 ~95 run function burg:laterne
 execute positioned ~32 ~19 ~115 run function burg:laterne
 execute positioned ~32 ~19 ~135 run function burg:laterne
 
+# Thron Podest
+tellraw @s "Podest"
+execute positioned ~ ~20 ~130 run function burg:podest
+
+
 tellraw @s "Stepper"
 # Stepper wiederherstellen
 execute positioned 0 63 0 run function stepper:stepper100
