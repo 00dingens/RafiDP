@@ -45,6 +45,12 @@ execute positioned ~10 ~-1 ~195 run function burg:turm11
 fill ~-80 ~121 ~10 ~80 ~121 ~200 air replace polished_deepslate_wall
 fill ~-80 ~122 ~10 ~80 ~122 ~200 air replace polished_deepslate_wall
 
+
+# Thron Podest (vor Zimmern)
+tellraw @s "Podest"
+execute positioned ~ ~20 ~130 run function burg:podest
+
+
 #Zimmer East
 execute positioned ~40 ~19 ~30 run function burg:zimmer_east
 execute positioned ~40 ~19 ~60 run function burg:zimmer_east
@@ -75,6 +81,12 @@ execute positioned ~40 ~59 ~60 run function burg:zimmer_east
 execute positioned ~40 ~59 ~90 run function burg:zimmer_east
 execute positioned ~40 ~59 ~120 run function burg:zimmer_east
 execute positioned ~40 ~59 ~150 run function burg:zimmer_east
+
+execute positioned ~40 ~69 ~30 run function burg:zimmer_east
+execute positioned ~40 ~69 ~60 run function burg:zimmer_east
+execute positioned ~40 ~69 ~90 run function burg:zimmer_east
+execute positioned ~40 ~69 ~120 run function burg:zimmer_east
+execute positioned ~40 ~69 ~150 run function burg:zimmer_east
 
 #Zimmer West
 execute positioned ~-60 ~19 ~30 run function burg:zimmer_west
@@ -107,6 +119,31 @@ execute positioned ~-60 ~59 ~90 run function burg:zimmer_west
 execute positioned ~-60 ~59 ~120 run function burg:zimmer_west
 execute positioned ~-60 ~59 ~150 run function burg:zimmer_west
 
+execute positioned ~-60 ~69 ~30 run function burg:zimmer_west
+execute positioned ~-60 ~69 ~60 run function burg:zimmer_west
+execute positioned ~-60 ~69 ~90 run function burg:zimmer_west
+execute positioned ~-60 ~69 ~120 run function burg:zimmer_west
+execute positioned ~-60 ~69 ~150 run function burg:zimmer_west
+
+# Obere Riesenbalkone
+fill ~-60 ~80 ~20 ~60 ~80 ~180 deepslate_tiles
+fill ~-60 ~83 ~20 ~60 ~83 ~180 deepslate_tiles
+# Geländer für obere Quergänge
+fill ~-26 ~84 ~32 ~26 ~84 ~40 deepslate_brick_wall
+fill ~-26 ~84 ~50 ~26 ~84 ~60 deepslate_brick_wall
+fill ~-26 ~84 ~70 ~26 ~84 ~80 deepslate_brick_wall
+fill ~-26 ~84 ~90 ~26 ~84 ~100 deepslate_brick_wall
+# Wände für die Öffnungen für Obere Quergänge
+fill ~-26 ~80 ~32 ~26 ~83 ~40 deepslate_tiles
+fill ~-26 ~80 ~50 ~26 ~83 ~60 deepslate_tiles
+fill ~-26 ~80 ~70 ~26 ~83 ~80 deepslate_tiles
+fill ~-26 ~80 ~90 ~26 ~83 ~100 deepslate_tiles
+# Öffnungen für Obere Quergänge
+fill ~-25 ~80 ~33 ~25 ~84 ~39 air
+fill ~-25 ~80 ~51 ~25 ~84 ~59 air
+fill ~-25 ~80 ~71 ~25 ~84 ~79 air
+fill ~-25 ~80 ~91 ~25 ~84 ~99 air
+
 # Säulen
 execute positioned ~-18 ~-1 ~42 run function burg:pillar7
 execute positioned ~-18 ~-1 ~62 run function burg:pillar7
@@ -116,6 +153,7 @@ execute positioned ~12 ~-1 ~42 run function burg:pillar7
 execute positioned ~12 ~-1 ~62 run function burg:pillar7
 execute positioned ~12 ~-1 ~82 run function burg:pillar7
 execute positioned ~12 ~-1 ~102 run function burg:pillar7
+
 
 #Laternen
 execute positioned ~-32 ~19 ~35 run function burg:laterne
@@ -130,10 +168,6 @@ execute positioned ~32 ~19 ~75 run function burg:laterne
 execute positioned ~32 ~19 ~95 run function burg:laterne
 execute positioned ~32 ~19 ~115 run function burg:laterne
 execute positioned ~32 ~19 ~135 run function burg:laterne
-
-# Thron Podest
-tellraw @s "Podest"
-execute positioned ~ ~20 ~130 run function burg:podest
 
 
 tellraw @s "Stepper"

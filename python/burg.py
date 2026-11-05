@@ -30,3 +30,5 @@ with open(dpPath + f'fackeln.mcfunction', "w") as file:
       file.writelines(f'setblock ~{x} ~122 ~{z} torch\n')
       if abs(x) + z > 30 and abs(x)<60 and 20 < z < 180:
         file.writelines(f'setblock ~{x} ~21 ~{z} torch\n')
+      if abs(x)<40 and 150 < z < 180:
+        file.writelines(f'setblock ~{x} ~41 ~{z} torch\n')
