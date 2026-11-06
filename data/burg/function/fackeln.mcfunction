@@ -1,5 +1,5 @@
 
-#fackeln im Burginneren (unten, rundgang, innerer boden)
+#fackeln im Burginneren (unten, rundgang, innerer boden, thron-raum)
 setblock ~-75 ~1 ~15 torch
 setblock ~-75 ~122 ~15 torch
 setblock ~-75 ~1 ~25 torch
@@ -236,7 +236,6 @@ setblock ~-35 ~41 ~165 torch
 setblock ~-35 ~1 ~175 torch
 setblock ~-35 ~122 ~175 torch
 setblock ~-35 ~21 ~175 torch
-setblock ~-35 ~41 ~175 torch
 setblock ~-35 ~1 ~185 torch
 setblock ~-35 ~122 ~185 torch
 setblock ~-35 ~1 ~195 torch
@@ -293,7 +292,6 @@ setblock ~-25 ~41 ~165 torch
 setblock ~-25 ~1 ~175 torch
 setblock ~-25 ~122 ~175 torch
 setblock ~-25 ~21 ~175 torch
-setblock ~-25 ~41 ~175 torch
 setblock ~-25 ~1 ~185 torch
 setblock ~-25 ~122 ~185 torch
 setblock ~-25 ~1 ~195 torch
@@ -350,7 +348,6 @@ setblock ~-15 ~41 ~165 torch
 setblock ~-15 ~1 ~175 torch
 setblock ~-15 ~122 ~175 torch
 setblock ~-15 ~21 ~175 torch
-setblock ~-15 ~41 ~175 torch
 setblock ~-15 ~1 ~185 torch
 setblock ~-15 ~122 ~185 torch
 setblock ~-15 ~1 ~195 torch
@@ -406,7 +403,6 @@ setblock ~-5 ~41 ~165 torch
 setblock ~-5 ~1 ~175 torch
 setblock ~-5 ~122 ~175 torch
 setblock ~-5 ~21 ~175 torch
-setblock ~-5 ~41 ~175 torch
 setblock ~-5 ~1 ~185 torch
 setblock ~-5 ~122 ~185 torch
 setblock ~-5 ~1 ~195 torch
@@ -462,7 +458,6 @@ setblock ~5 ~41 ~165 torch
 setblock ~5 ~1 ~175 torch
 setblock ~5 ~122 ~175 torch
 setblock ~5 ~21 ~175 torch
-setblock ~5 ~41 ~175 torch
 setblock ~5 ~1 ~185 torch
 setblock ~5 ~122 ~185 torch
 setblock ~5 ~1 ~195 torch
@@ -519,7 +514,6 @@ setblock ~15 ~41 ~165 torch
 setblock ~15 ~1 ~175 torch
 setblock ~15 ~122 ~175 torch
 setblock ~15 ~21 ~175 torch
-setblock ~15 ~41 ~175 torch
 setblock ~15 ~1 ~185 torch
 setblock ~15 ~122 ~185 torch
 setblock ~15 ~1 ~195 torch
@@ -576,7 +570,6 @@ setblock ~25 ~41 ~165 torch
 setblock ~25 ~1 ~175 torch
 setblock ~25 ~122 ~175 torch
 setblock ~25 ~21 ~175 torch
-setblock ~25 ~41 ~175 torch
 setblock ~25 ~1 ~185 torch
 setblock ~25 ~122 ~185 torch
 setblock ~25 ~1 ~195 torch
@@ -633,7 +626,6 @@ setblock ~35 ~41 ~165 torch
 setblock ~35 ~1 ~175 torch
 setblock ~35 ~122 ~175 torch
 setblock ~35 ~21 ~175 torch
-setblock ~35 ~41 ~175 torch
 setblock ~35 ~1 ~185 torch
 setblock ~35 ~122 ~185 torch
 setblock ~35 ~1 ~195 torch
@@ -822,3 +814,69 @@ setblock ~75 ~1 ~185 torch
 setblock ~75 ~122 ~185 torch
 setblock ~75 ~1 ~195 torch
 setblock ~75 ~122 ~195 torch
+
+#Laternen hinter dem Thron-Raum (Im Gang, unterm Gang)
+setblock ~2 ~43 ~177 lantern[hanging=true]
+setblock ~-2 ~43 ~177 lantern[hanging=true]
+setblock ~2 ~39 ~177 lantern[hanging=true]
+setblock ~-2 ~39 ~177 lantern[hanging=true]
+setblock ~2 ~53 ~177 lantern[hanging=true]
+setblock ~-2 ~53 ~177 lantern[hanging=true]
+setblock ~2 ~49 ~177 lantern[hanging=true]
+setblock ~-2 ~49 ~177 lantern[hanging=true]
+setblock ~2 ~63 ~177 lantern[hanging=true]
+setblock ~-2 ~63 ~177 lantern[hanging=true]
+setblock ~2 ~59 ~177 lantern[hanging=true]
+setblock ~-2 ~59 ~177 lantern[hanging=true]
+setblock ~2 ~73 ~177 lantern[hanging=true]
+setblock ~-2 ~73 ~177 lantern[hanging=true]
+setblock ~2 ~69 ~177 lantern[hanging=true]
+setblock ~-2 ~69 ~177 lantern[hanging=true]
+setblock ~12 ~43 ~177 lantern[hanging=true]
+setblock ~-12 ~43 ~177 lantern[hanging=true]
+setblock ~12 ~39 ~177 lantern[hanging=true]
+setblock ~-12 ~39 ~177 lantern[hanging=true]
+setblock ~12 ~53 ~177 lantern[hanging=true]
+setblock ~-12 ~53 ~177 lantern[hanging=true]
+setblock ~12 ~49 ~177 lantern[hanging=true]
+setblock ~-12 ~49 ~177 lantern[hanging=true]
+setblock ~12 ~63 ~177 lantern[hanging=true]
+setblock ~-12 ~63 ~177 lantern[hanging=true]
+setblock ~12 ~59 ~177 lantern[hanging=true]
+setblock ~-12 ~59 ~177 lantern[hanging=true]
+setblock ~12 ~73 ~177 lantern[hanging=true]
+setblock ~-12 ~73 ~177 lantern[hanging=true]
+setblock ~12 ~69 ~177 lantern[hanging=true]
+setblock ~-12 ~69 ~177 lantern[hanging=true]
+setblock ~22 ~43 ~177 lantern[hanging=true]
+setblock ~-22 ~43 ~177 lantern[hanging=true]
+setblock ~22 ~39 ~177 lantern[hanging=true]
+setblock ~-22 ~39 ~177 lantern[hanging=true]
+setblock ~22 ~53 ~177 lantern[hanging=true]
+setblock ~-22 ~53 ~177 lantern[hanging=true]
+setblock ~22 ~49 ~177 lantern[hanging=true]
+setblock ~-22 ~49 ~177 lantern[hanging=true]
+setblock ~22 ~63 ~177 lantern[hanging=true]
+setblock ~-22 ~63 ~177 lantern[hanging=true]
+setblock ~22 ~59 ~177 lantern[hanging=true]
+setblock ~-22 ~59 ~177 lantern[hanging=true]
+setblock ~22 ~73 ~177 lantern[hanging=true]
+setblock ~-22 ~73 ~177 lantern[hanging=true]
+setblock ~22 ~69 ~177 lantern[hanging=true]
+setblock ~-22 ~69 ~177 lantern[hanging=true]
+setblock ~32 ~43 ~177 lantern[hanging=true]
+setblock ~-32 ~43 ~177 lantern[hanging=true]
+setblock ~32 ~39 ~177 lantern[hanging=true]
+setblock ~-32 ~39 ~177 lantern[hanging=true]
+setblock ~32 ~53 ~177 lantern[hanging=true]
+setblock ~-32 ~53 ~177 lantern[hanging=true]
+setblock ~32 ~49 ~177 lantern[hanging=true]
+setblock ~-32 ~49 ~177 lantern[hanging=true]
+setblock ~32 ~63 ~177 lantern[hanging=true]
+setblock ~-32 ~63 ~177 lantern[hanging=true]
+setblock ~32 ~59 ~177 lantern[hanging=true]
+setblock ~-32 ~59 ~177 lantern[hanging=true]
+setblock ~32 ~73 ~177 lantern[hanging=true]
+setblock ~-32 ~73 ~177 lantern[hanging=true]
+setblock ~32 ~69 ~177 lantern[hanging=true]
+setblock ~-32 ~69 ~177 lantern[hanging=true]

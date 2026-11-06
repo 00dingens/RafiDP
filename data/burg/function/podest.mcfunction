@@ -32,7 +32,7 @@ fill ~-15 ~17 ~15 ~15 ~17 ~20 stone
 fill ~-14 ~18 ~16 ~14 ~18 ~20 stone_slab
 fill ~-13 ~18 ~17 ~13 ~18 ~20 stone
 fill ~-12 ~19 ~18 ~12 ~19 ~20 stone_slab
-#fill ~-11 ~19 ~19 ~11 ~19 ~20 stone
+fill ~-11 ~19 ~19 ~11 ~19 ~20 stone
 #fill ~-10 ~20 ~20 ~10 ~20 ~20 stone_slab
 # Treppen Balkon
 fill ~-21 ~14 ~5 ~21 ~14 ~20 stone
@@ -100,8 +100,113 @@ setblock ~-30 ~10 ~ torch
 setblock ~-30 ~13 ~20 wall_torch[facing=north]
 setblock ~30 ~13 ~20 wall_torch[facing=north]
 
+# Pfostenlaternen auf Treppe
+execute positioned ~-11 ~19 ~19 run function burg:laterne
+execute positioned ~11 ~19 ~19 run function burg:laterne
 
-# Pfostenlaternen
-execute positioned ~-12 ~19 ~17 run function burg:laterne
-execute positioned ~ ~19 ~17 run function burg:laterne
-execute positioned ~12 ~19 ~17 run function burg:laterne
+# Treppen hinterm Thron
+# Treppenhaus
+fill ~-5 ~20 ~44 ~5 ~60 ~50 stone_bricks hollow
+# Bücherregale im Treppenhaus
+fill ~-4 ~20 ~45 ~-4 ~60 ~49 bookshelf
+fill ~4 ~20 ~45 ~4 ~60 ~49 bookshelf
+# Gänge nach außen
+fill ~-34 ~19 ~44 ~34 ~23 ~50 stone_bricks hollow
+fill ~-34 ~29 ~44 ~34 ~33 ~50 stone_bricks hollow
+fill ~-34 ~39 ~44 ~34 ~43 ~50 stone_bricks hollow
+fill ~-34 ~49 ~44 ~34 ~53 ~50 stone_bricks hollow
+# Türen am Ende der Gänge
+setblock ~35 ~20 ~47 dirt
+setblock ~34 ~20 ~47 dark_oak_door[half=lower,facing=west,open=false]
+setblock ~34 ~21 ~47 dark_oak_door[half=upper,facing=west,open=false]
+setblock ~-35 ~20 ~47 dirt
+setblock ~-34 ~20 ~47 dark_oak_door[half=lower,facing=north,open=true]
+setblock ~-34 ~21 ~47 dark_oak_door[half=upper,facing=north,open=true]
+
+setblock ~35 ~30 ~47 dirt
+setblock ~34 ~30 ~47 dark_oak_door[half=lower,facing=west,open=false]
+setblock ~34 ~31 ~47 dark_oak_door[half=upper,facing=west,open=false]
+setblock ~-35 ~30 ~47 dirt
+setblock ~-34 ~30 ~47 dark_oak_door[half=lower,facing=north,open=true]
+setblock ~-34 ~31 ~47 dark_oak_door[half=upper,facing=north,open=true]
+
+setblock ~35 ~40 ~47 dirt
+setblock ~34 ~40 ~47 dark_oak_door[half=lower,facing=west,open=false]
+setblock ~34 ~41 ~47 dark_oak_door[half=upper,facing=west,open=false]
+setblock ~-35 ~40 ~47 dirt
+setblock ~-34 ~40 ~47 dark_oak_door[half=lower,facing=north,open=true]
+setblock ~-34 ~41 ~47 dark_oak_door[half=upper,facing=north,open=true]
+
+setblock ~35 ~50 ~47 dirt
+setblock ~34 ~50 ~47 dark_oak_door[half=lower,facing=west,open=false]
+setblock ~34 ~51 ~47 dark_oak_door[half=upper,facing=west,open=false]
+setblock ~-35 ~50 ~47 dirt
+setblock ~-34 ~50 ~47 dark_oak_door[half=lower,facing=north,open=true]
+setblock ~-34 ~51 ~47 dark_oak_door[half=upper,facing=north,open=true]
+
+# Türen am Ende der Geheimgänge
+setblock ~29 ~24 ~47 stone_pressure_plate
+setblock ~30 ~24 ~47 iron_door[half=lower,facing=west,open=false]
+setblock ~30 ~25 ~47 iron_door[half=upper,facing=west,open=false]
+setblock ~-29 ~24 ~47 stone_pressure_plate
+setblock ~-30 ~24 ~47 iron_door[half=lower,facing=north,open=true]
+setblock ~-30 ~25 ~47 iron_door[half=upper,facing=north,open=true]
+
+setblock ~29 ~34 ~47 stone_pressure_plate
+setblock ~30 ~34 ~47 iron_door[half=lower,facing=west,open=false]
+setblock ~30 ~35 ~47 iron_door[half=upper,facing=west,open=false]
+setblock ~-29 ~34 ~47 stone_pressure_plate
+setblock ~-30 ~34 ~47 iron_door[half=lower,facing=north,open=true]
+setblock ~-30 ~35 ~47 iron_door[half=upper,facing=north,open=true]
+
+setblock ~29 ~44 ~47 stone_pressure_plate
+setblock ~30 ~44 ~47 iron_door[half=lower,facing=west,open=false]
+setblock ~30 ~45 ~47 iron_door[half=upper,facing=west,open=false]
+setblock ~-29 ~44 ~47 stone_pressure_plate
+setblock ~-30 ~44 ~47 iron_door[half=lower,facing=north,open=true]
+setblock ~-30 ~45 ~47 iron_door[half=upper,facing=north,open=true]
+
+setblock ~29 ~54 ~47 stone_pressure_plate
+setblock ~30 ~54 ~47 iron_door[half=lower,facing=west,open=false]
+setblock ~30 ~55 ~47 iron_door[half=upper,facing=west,open=false]
+setblock ~-29 ~54 ~47 stone_pressure_plate
+setblock ~-30 ~54 ~47 iron_door[half=lower,facing=north,open=true]
+setblock ~-30 ~55 ~47 iron_door[half=upper,facing=north,open=true]
+
+# Geländer hinter den Geheimgang-Türen
+fill ~-34 ~24 ~44 ~-34 ~24 ~49 stone_brick_wall
+fill ~-34 ~24 ~44 ~-31 ~24 ~44 stone_brick_wall
+fill ~34 ~24 ~44 ~34 ~24 ~49 stone_brick_wall
+fill ~34 ~24 ~44 ~31 ~24 ~44 stone_brick_wall
+
+fill ~-34 ~34 ~44 ~-34 ~34 ~49 stone_brick_wall
+fill ~-34 ~34 ~44 ~-31 ~34 ~44 stone_brick_wall
+fill ~34 ~34 ~44 ~34 ~34 ~49 stone_brick_wall
+fill ~34 ~34 ~44 ~31 ~34 ~44 stone_brick_wall
+
+fill ~-34 ~44 ~44 ~-34 ~44 ~49 stone_brick_wall
+fill ~-34 ~44 ~44 ~-31 ~44 ~44 stone_brick_wall
+fill ~34 ~44 ~44 ~34 ~44 ~49 stone_brick_wall
+fill ~34 ~44 ~44 ~31 ~44 ~44 stone_brick_wall
+
+fill ~-34 ~54 ~44 ~-34 ~54 ~49 stone_brick_wall
+fill ~-34 ~54 ~44 ~-31 ~54 ~44 stone_brick_wall
+fill ~34 ~54 ~44 ~34 ~54 ~49 stone_brick_wall
+fill ~34 ~54 ~44 ~31 ~54 ~44 stone_brick_wall
+
+# Lücken für Treppen
+fill ~4 ~23 ~49 ~1 ~23 ~49 air
+fill ~-1 ~29 ~49 ~-5 ~29 ~49 air
+fill ~-4 ~33 ~45 ~-1 ~33 ~45 air
+fill ~1 ~39 ~45 ~5 ~39 ~45 air
+fill ~4 ~43 ~49 ~1 ~43 ~49 air
+fill ~-1 ~49 ~49 ~-5 ~49 ~49 air
+# Treppen
+execute positioned ~4 ~20 ~49 run function burg:treppe_w
+execute positioned ~-4 ~30 ~45 run function burg:treppe_e
+execute positioned ~4 ~40 ~49 run function burg:treppe_w
+# Wand
+fill ~-30 ~20 ~44 ~30 ~60 ~44 stone_bricks
+# Tür
+setblock ~ ~20 ~44 dark_oak_door[half=lower,facing=south,open=false]
+setblock ~ ~21 ~44 dark_oak_door[half=upper,facing=south,open=false]

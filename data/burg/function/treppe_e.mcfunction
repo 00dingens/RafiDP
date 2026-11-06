@@ -1,0 +1,11 @@
+# Treppe 1 breit von 0,0 bis 9,9 steigend richtung osten
+setblock ~ ~ ~ stone_stairs[facing=east]
+setblock ~1 ~1 ~ stone_stairs[facing=east]
+setblock ~2 ~2 ~ stone_stairs[facing=east]
+setblock ~3 ~3 ~ stone_stairs[facing=east]
+setblock ~4 ~4 ~ stone_stairs[facing=east]
+setblock ~5 ~5 ~ stone_stairs[facing=east]
+setblock ~6 ~6 ~ stone_stairs[facing=east]
+setblock ~7 ~7 ~ stone_stairs[facing=east]
+setblock ~8 ~8 ~ stone_stairs[facing=east]
+setblock ~9 ~9 ~ stone_stairs[facing=east]

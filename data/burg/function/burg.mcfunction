@@ -5,6 +5,10 @@ tellraw @s "Rundgang"
 # Rundgang
 execute positioned ~ ~-1 ~ run function burg:rundgang
 
+# Thron Podest (vor Zimmern und Fackeln)
+tellraw @s "Podest"
+execute positioned ~ ~20 ~130 run function burg:podest
+
 # Fackeln im inneren und überall
 execute positioned ~ ~-1 ~ run function burg:fackeln
 
@@ -45,12 +49,6 @@ execute positioned ~10 ~-1 ~195 run function burg:turm11
 fill ~-80 ~121 ~10 ~80 ~121 ~200 air replace polished_deepslate_wall
 fill ~-80 ~122 ~10 ~80 ~122 ~200 air replace polished_deepslate_wall
 
-
-# Thron Podest (vor Zimmern)
-tellraw @s "Podest"
-execute positioned ~ ~20 ~130 run function burg:podest
-
-
 #Zimmer East
 execute positioned ~40 ~19 ~30 run function burg:zimmer_east
 execute positioned ~40 ~19 ~60 run function burg:zimmer_east
@@ -69,24 +67,28 @@ execute positioned ~40 ~39 ~60 run function burg:zimmer_east
 execute positioned ~40 ~39 ~90 run function burg:zimmer_east
 execute positioned ~40 ~39 ~120 run function burg:zimmer_east
 execute positioned ~40 ~39 ~150 run function burg:zimmer_east
+fill ~35 ~40 ~175 ~35 ~40 ~179 air
 
 execute positioned ~40 ~49 ~30 run function burg:zimmer_east
 execute positioned ~40 ~49 ~60 run function burg:zimmer_east
 execute positioned ~40 ~49 ~90 run function burg:zimmer_east
 execute positioned ~40 ~49 ~120 run function burg:zimmer_east
 execute positioned ~40 ~49 ~150 run function burg:zimmer_east
+fill ~35 ~50 ~175 ~35 ~50 ~179 air
 
 execute positioned ~40 ~59 ~30 run function burg:zimmer_east
 execute positioned ~40 ~59 ~60 run function burg:zimmer_east
 execute positioned ~40 ~59 ~90 run function burg:zimmer_east
 execute positioned ~40 ~59 ~120 run function burg:zimmer_east
 execute positioned ~40 ~59 ~150 run function burg:zimmer_east
+fill ~35 ~60 ~175 ~35 ~60 ~179 air
 
 execute positioned ~40 ~69 ~30 run function burg:zimmer_east
 execute positioned ~40 ~69 ~60 run function burg:zimmer_east
 execute positioned ~40 ~69 ~90 run function burg:zimmer_east
 execute positioned ~40 ~69 ~120 run function burg:zimmer_east
 execute positioned ~40 ~69 ~150 run function burg:zimmer_east
+fill ~35 ~70 ~175 ~35 ~70 ~179 air
 
 #Zimmer West
 execute positioned ~-60 ~19 ~30 run function burg:zimmer_west
@@ -106,24 +108,28 @@ execute positioned ~-60 ~39 ~60 run function burg:zimmer_west
 execute positioned ~-60 ~39 ~90 run function burg:zimmer_west
 execute positioned ~-60 ~39 ~120 run function burg:zimmer_west
 execute positioned ~-60 ~39 ~150 run function burg:zimmer_west
+fill ~-35 ~40 ~175 ~-35 ~40 ~179 air
 
 execute positioned ~-60 ~49 ~30 run function burg:zimmer_west
 execute positioned ~-60 ~49 ~60 run function burg:zimmer_west
 execute positioned ~-60 ~49 ~90 run function burg:zimmer_west
 execute positioned ~-60 ~49 ~120 run function burg:zimmer_west
 execute positioned ~-60 ~49 ~150 run function burg:zimmer_west
+fill ~-35 ~50 ~175 ~-35 ~50 ~179 air
 
 execute positioned ~-60 ~59 ~30 run function burg:zimmer_west
 execute positioned ~-60 ~59 ~60 run function burg:zimmer_west
 execute positioned ~-60 ~59 ~90 run function burg:zimmer_west
 execute positioned ~-60 ~59 ~120 run function burg:zimmer_west
 execute positioned ~-60 ~59 ~150 run function burg:zimmer_west
+fill ~-35 ~60 ~175 ~-35 ~60 ~179 air
 
 execute positioned ~-60 ~69 ~30 run function burg:zimmer_west
 execute positioned ~-60 ~69 ~60 run function burg:zimmer_west
 execute positioned ~-60 ~69 ~90 run function burg:zimmer_west
 execute positioned ~-60 ~69 ~120 run function burg:zimmer_west
 execute positioned ~-60 ~69 ~150 run function burg:zimmer_west
+fill ~-35 ~70 ~175 ~-35 ~70 ~179 air
 
 # Obere Riesenbalkone
 fill ~-60 ~80 ~20 ~60 ~80 ~180 deepslate_tiles
