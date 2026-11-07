@@ -1,6 +1,9 @@
 
 # Decke
 fill ~-80 ~121 ~10 ~80 ~121 ~200 polished_deepslate
+fill ~-60 ~120 ~20 ~60 ~120 ~180 polished_deepslate
+fill ~-60 ~119 ~20 ~60 ~119 ~180 polished_deepslate
+fill ~-60 ~118 ~20 ~60 ~118 ~180 polished_deepslate
 # Rand-Treppe
 fill ~-81 ~121 ~9 ~81 ~121 ~9 polished_deepslate_stairs[facing=north,half=top]
 fill ~-81 ~121 ~201 ~81 ~121 ~201 polished_deepslate_stairs[facing=south,half=top]
