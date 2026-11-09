@@ -33,12 +33,23 @@ setblock ~1 ~3 ~16 wall_torch[facing=east]
 setblock ~19 ~3 ~15 wall_torch[facing=west]
 setblock ~19 ~3 ~16 wall_torch[facing=west]
 
-
+# Türen zu Wohnungen (zu=Griff rechts)
+setblock ~5 ~1 ~13 birch_door[half=lower,facing=west,open=true]
+setblock ~5 ~2 ~13 birch_door[half=upper,facing=west,open=true]
+setblock ~5 ~1 ~18 birch_door[half=lower,facing=south,open=false]
+setblock ~5 ~2 ~18 birch_door[half=upper,facing=south,open=false]
+setblock ~15 ~1 ~13 birch_door[half=lower,facing=north,open=false]
+setblock ~15 ~2 ~13 birch_door[half=upper,facing=north,open=false]
+setblock ~15 ~1 ~18 birch_door[half=lower,facing=east,open=true]
+setblock ~15 ~2 ~18 birch_door[half=upper,facing=east,open=true]
 
 # Fackeln überm ganzen temporär
-setblock ~5 ~11 ~5 torch
-setblock ~15 ~11 ~5 torch
-setblock ~5 ~11 ~15 torch
-setblock ~15 ~11 ~15 torch
-setblock ~5 ~11 ~25 torch
-setblock ~15 ~11 ~25 torch
+#setblock ~5 ~11 ~5 torch
+#setblock ~15 ~11 ~5 torch
+#setblock ~5 ~11 ~15 torch
+#setblock ~15 ~11 ~15 torch
+#setblock ~5 ~11 ~25 torch
+#setblock ~15 ~11 ~25 torch
+
+# Kamin
+place structure einrichtung:kamin ~2 ~1 ~1
