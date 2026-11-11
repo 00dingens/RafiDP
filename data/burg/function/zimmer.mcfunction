@@ -51,5 +51,6 @@ setblock ~15 ~2 ~18 birch_door[half=upper,facing=east,open=true]
 #setblock ~5 ~11 ~25 torch
 #setblock ~15 ~11 ~25 torch
 
-# Kamin
-place structure einrichtung:kamin ~2 ~1 ~1
+# Einrichtung
+execute positioned ~ ~ ~1 run function burg:zimmer_a
+execute positioned ~ ~ ~18 run function burg:zimmer_b
