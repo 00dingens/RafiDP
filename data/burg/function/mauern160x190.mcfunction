@@ -36,3 +36,57 @@ fill ~-62 ~-30 ~20 ~-62 ~120 ~180 deepslate
 fill ~62 ~-30 ~20 ~62 ~120 ~180 deepslate
 fill ~-62 ~-30 ~18 ~62 ~120 ~18 deepslate
 fill ~-62 ~-30 ~182 ~62 ~120 ~182 deepslate
+
+# "Rundgang"
+# Decke
+fill ~-80 ~121 ~10 ~80 ~121 ~200 polished_deepslate
+fill ~-79 ~120 ~11 ~79 ~120 ~199 deepslate
+fill ~-79 ~119 ~11 ~79 ~119 ~199 deepslate
+fill ~-79 ~118 ~11 ~79 ~118 ~199 deepslate
+fill ~-60 ~118 ~20 ~60 ~118 ~180 polished_deepslate
+# TODO Labyrinth
+# Rand-Treppe
+fill ~-81 ~121 ~9 ~81 ~121 ~9 polished_deepslate_stairs[facing=north,half=top]
+fill ~-81 ~121 ~201 ~81 ~121 ~201 polished_deepslate_stairs[facing=south,half=top]
+fill ~81 ~121 ~9 ~81 ~121 ~201 polished_deepslate_stairs[facing=west,half=top]
+fill ~-81 ~121 ~9 ~-81 ~121 ~201 polished_deepslate_stairs[facing=east,half=top]
+# Rand-Geländer
+fill ~-81 ~122 ~9 ~81 ~122 ~9 polished_deepslate_wall
+fill ~-81 ~122 ~201 ~81 ~122 ~201 polished_deepslate_wall
+fill ~81 ~122 ~9 ~81 ~122 ~201 polished_deepslate_wall
+fill ~-81 ~122 ~9 ~-81 ~122 ~201 polished_deepslate_wall
+
+
+# Speisesaal
+
+# Mauern
+fill ~-60 ~122 ~20 ~-60 ~149 ~180 deepslate
+fill ~60 ~122 ~20 ~60 ~149 ~180 deepslate
+fill ~-60 ~122 ~20 ~60 ~149 ~20 deepslate
+fill ~-60 ~122 ~180 ~60 ~149 ~180 deepslate
+
+# Fenster vorne
+fill ~-51 ~129 ~20 ~-49 ~145 ~20 black_stained_glass_pane
+fill ~-41 ~129 ~20 ~-39 ~150 ~20 black_stained_glass_pane
+fill ~-31 ~129 ~20 ~-29 ~155 ~20 black_stained_glass_pane
+fill ~-21 ~129 ~20 ~-19 ~160 ~20 black_stained_glass_pane
+fill ~-11 ~129 ~20 ~-9 ~165 ~20 black_stained_glass_pane
+fill ~-1 ~129 ~20 ~1 ~170 ~20 black_stained_glass_pane
+fill ~11 ~129 ~20 ~9 ~165 ~20 black_stained_glass_pane
+fill ~21 ~129 ~20 ~19 ~160 ~20 black_stained_glass_pane
+fill ~31 ~129 ~20 ~29 ~155 ~20 black_stained_glass_pane
+fill ~41 ~129 ~20 ~39 ~150 ~20 black_stained_glass_pane
+fill ~51 ~129 ~20 ~49 ~145 ~20 black_stained_glass_pane
+
+# Fenster hinten
+fill ~-51 ~129 ~180 ~-49 ~145 ~180 black_stained_glass_pane
+fill ~-41 ~129 ~180 ~-39 ~150 ~180 black_stained_glass_pane
+fill ~-31 ~129 ~180 ~-29 ~155 ~180 black_stained_glass_pane
+fill ~-21 ~129 ~180 ~-19 ~160 ~180 black_stained_glass_pane
+fill ~-11 ~129 ~180 ~-9 ~165 ~180 black_stained_glass_pane
+fill ~-1 ~129 ~180 ~1 ~170 ~180 black_stained_glass_pane
+fill ~11 ~129 ~180 ~9 ~165 ~180 black_stained_glass_pane
+fill ~21 ~129 ~180 ~19 ~160 ~180 black_stained_glass_pane
+fill ~31 ~129 ~180 ~29 ~155 ~180 black_stained_glass_pane
+fill ~41 ~129 ~180 ~39 ~150 ~180 black_stained_glass_pane
+fill ~51 ~129 ~180 ~49 ~145 ~180 black_stained_glass_pane

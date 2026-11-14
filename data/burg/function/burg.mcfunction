@@ -1,9 +1,10 @@
 tellraw @s "Mauern"
+execute positioned ~ ~-1 ~ run function burg:dach
 execute positioned ~ ~-1 ~ run function burg:mauern160x190
 
 tellraw @s "Rundgang"
 # Rundgang
-execute positioned ~ ~-1 ~ run function burg:rundgang
+#execute positioned ~ ~-1 ~ run function burg:rundgang
 
 # Thron Podest (vor Zimmern und Fackeln)
 tellraw @s "Podest"

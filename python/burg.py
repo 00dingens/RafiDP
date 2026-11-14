@@ -40,3 +40,18 @@ with open(dpPath + f'fackeln.mcfunction', "w") as file:
       file.writelines(f'setblock ~{x} ~{y-4} ~{177} lantern[hanging=true]\n')
       file.writelines(f'setblock ~{-x} ~{y-4} ~{177} lantern[hanging=true]\n')
 
+print('Dach')
+with open(dpPath + f'dach.mcfunction', "w") as file:
+  file.writelines('''fill ~ ~180 ~18 ~ ~180 ~182 polished_blackstone_bricks
+fill ~ ~179 ~20 ~ ~149 ~20 deepslate
+fill ~ ~179 ~180 ~ ~149 ~180 deepslate\n''')
+  for i in range(1, 66, 2):
+    file.writelines(f'''fill ~{i} ~{180 - i // 2} ~18 ~{i} ~{180 - i // 2} ~182 polished_blackstone_brick_slab[type=bottom]
+fill ~{i} ~{179 - i // 2} ~18 ~{i} ~{179 - i // 2} ~182 polished_blackstone_brick_slab[type=top]
+fill ~{i+1} ~{179 - i // 2} ~18 ~{i+1} ~{179 - i // 2} ~182 polished_blackstone_bricks\n''')
+    file.writelines(f'''fill ~{-i} ~{180 - i // 2} ~18 ~{-i} ~{180 - i // 2} ~182 polished_blackstone_brick_slab[type=bottom]
+fill ~{-i} ~{179 - i // 2} ~18 ~{-i} ~{179 - i // 2} ~182 polished_blackstone_brick_slab[type=top]
+fill ~{-i-1} ~{179 - i // 2} ~18 ~{-i-1} ~{179 - i // 2} ~182 polished_blackstone_bricks\n''')
+    if i < 60:
+      file.writelines(f'''fill ~{-i} ~{179 - i // 2} ~20 ~{i} ~149 ~20 deepslate
+fill ~{-i} ~{179 - i // 2} ~180 ~{i} ~149 ~180 deepslate\n''')
