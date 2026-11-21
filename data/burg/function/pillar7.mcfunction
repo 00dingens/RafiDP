@@ -13,6 +13,12 @@ fill ~1 ~-30 ~1 ~5 ~120 ~5 polished_blackstone
 fill ~ ~-30 ~2 ~6 ~120 ~4 polished_blackstone
 # Innerer Leitergang
 fill ~3 ~-30 ~3 ~3 ~120 ~3 air
+# Verbindung zum Labyrinth
+fill ~-1 ~18 ~3 ~7 ~19 ~3 air
+fill ~3 ~18 ~3 ~3 ~19 ~7 air
+fill ~-1 ~120 ~3 ~7 ~119 ~3 air
+fill ~3 ~120 ~3 ~3 ~119 ~7 air
+# Leiter
 fill ~3 ~-30 ~3 ~3 ~120 ~3 ladder[facing=south]
 
 

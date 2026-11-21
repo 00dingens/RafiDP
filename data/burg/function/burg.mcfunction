@@ -132,9 +132,13 @@ execute positioned ~-60 ~69 ~120 run function burg:zimmer_west
 execute positioned ~-60 ~69 ~150 run function burg:zimmer_west
 fill ~-35 ~70 ~175 ~-35 ~70 ~179 air
 
-# Obere Riesenbalkone
+# Obere Riesenbalkone im Saal
 fill ~-60 ~80 ~20 ~60 ~80 ~180 deepslate_tiles
+#fill ~-60 ~81 ~20 ~60 ~81 ~180 deepslate_tiles
+#fill ~-60 ~82 ~20 ~60 ~82 ~180 deepslate_tiles
 fill ~-60 ~83 ~20 ~60 ~83 ~180 deepslate_tiles
+# Labyrinth
+#execute positioned ~-60 ~83 ~25 run function mathe:labyrinth40x50
 # Geländer für obere Quergänge
 fill ~-26 ~84 ~32 ~26 ~84 ~40 deepslate_brick_wall
 fill ~-26 ~84 ~50 ~26 ~84 ~60 deepslate_brick_wall

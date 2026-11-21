@@ -17,7 +17,7 @@ class Laby2d:
     def __init__(self, w, h):
         self.w = w
         self.h = h
-        self.arr = [[0 for i in range(h)] for j in range(w)]
+        self.arr = [[0 for i in range(w)] for j in range(h)]
         # for debug
         # self.arr = [[3, 3, 1, 2], [3, 3, 1, 2], [2, 2, 0, 2], [1, 1, 1, 0]]
         self.arr[h//2][w//2] = 1
@@ -90,7 +90,7 @@ class Laby2d:
         dboth = dwall + dpath
 
         command = f'/fill ~ ~-3 ~ ~{self.w * dboth + dwall - 1} ~-1 ~{self.h * dboth + dwall - 1} {walls}'
-        result = 'tellraw @s [{"text":"Du brauchst vorher ","color":"white"},{"text":"'+command+'","color":"blue"}]'
+        result = '#tellraw @s [{"text":"Du brauchst vorher ","color":"white"},{"text":"'+command+'","color":"blue"}]'
         # horizontal
         for j in range(self.h):
             start = -1
@@ -112,7 +112,7 @@ class Laby2d:
                     result += f'\nfill ~{ii} ~-2 ~{start * dboth + dwall} ~{ii + dpath - 1} ~-1 ~{(j + 1) * dboth - 1} {paths}'
                     start = -1
         result = result.replace('~0 ', '~ ')
-        result += f'\ntellraw @s "2D Labyrinth {self.w}x{self.h} erzeugt, Wände {dwall}, Gänge {dpath}."'
+        result += f'\n#tellraw @s "2D Labyrinth {self.w}x{self.h} erzeugt, Wände {dwall}, Gänge {dpath}."'
         return result
 
 
@@ -517,12 +517,25 @@ def mandel(p=(-0.5,0), w=50, h=50, z=1, cycles=20, rotate=20):
 
 
 if generateEverything:
-    print('Labyrinth 2D')
+    print('Labyrinth 2D 13x13')
     l = Laby2d(13,13)
     with open(dpPath + "mathe/function/labyrinth13x13.mcfunction", "w") as file:
         file.writelines(l.getMcFunction())
-
     with open(dpPath + "mathe/function/labyrinth13x13.txt", "w") as file:
+        file.writelines(str(l))
+
+    print('Labyrinth 2D 40x50')
+    l = Laby2d(40,50)
+    with open(dpPath + "mathe/function/labyrinth40x50.mcfunction", "w") as file:
+        file.writelines(l.getMcFunction())
+    with open(dpPath + "mathe/function/labyrinth40x50.txt", "w") as file:
+        file.writelines(str(l))
+
+    print('Labyrinth 2D 53x63')
+    l = Laby2d(53, 63)
+    with open(dpPath + "mathe/function/labyrinth53x63.mcfunction", "w") as file:
+        file.writelines(l.getMcFunction())
+    with open(dpPath + "mathe/function/labyrinth53x63.txt", "w") as file:
         file.writelines(str(l))
 
 
