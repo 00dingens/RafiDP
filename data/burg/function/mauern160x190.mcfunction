@@ -69,13 +69,42 @@ fill ~60 ~122 ~20 ~60 ~149 ~180 deepslate
 fill ~-60 ~122 ~20 ~60 ~149 ~20 deepslate
 fill ~-60 ~122 ~180 ~60 ~149 ~180 deepslate
 
+# Pfette
+fill ~-1 ~148 ~21 ~1 ~150 ~179 dark_oak_log[axis=z] hollow
+
+# Trägerbalken mit Stütze
+fill ~-60 ~122 ~59 ~-58 ~147 ~61 deepslate hollow
+fill ~60 ~122 ~59 ~58 ~147 ~61 deepslate hollow
+fill ~-59 ~147 ~59 ~59 ~149 ~61 dark_oak_log[axis=x] hollow
+fill ~-60 ~122 ~99 ~-58 ~147 ~101 deepslate hollow
+fill ~60 ~122 ~99 ~58 ~147 ~101 deepslate hollow
+fill ~-59 ~147 ~99 ~59 ~149 ~101 dark_oak_log[axis=x] hollow
+fill ~-60 ~122 ~139 ~-58 ~147 ~141 deepslate hollow
+fill ~60 ~122 ~139 ~58 ~147 ~141 deepslate hollow
+fill ~-59 ~147 ~139 ~59 ~149 ~141 dark_oak_log[axis=x] hollow
+
+# Kerzen in Pfette
+fill ~ ~149 ~22 ~ ~150 ~178 air
+fill ~ ~149 ~24 ~ ~149 ~176 candle[candles=2,lit=true]
+
+# Kerzen in Trägern
+fill ~-59 ~148 ~60 ~59 ~149 ~60 air
+fill ~3 ~148 ~60 ~55 ~148 ~60 candle[candles=2,lit=true]
+fill ~-3 ~148 ~60 ~-55 ~148 ~60 candle[candles=2,lit=true]
+fill ~-59 ~148 ~100 ~59 ~149 ~100 air
+fill ~3 ~148 ~100 ~55 ~148 ~100 candle[candles=2,lit=true]
+fill ~-3 ~148 ~100 ~-55 ~148 ~100 candle[candles=2,lit=true]
+fill ~-59 ~148 ~140 ~59 ~149 ~140 air
+fill ~3 ~148 ~140 ~55 ~148 ~140 candle[candles=2,lit=true]
+fill ~-3 ~148 ~140 ~-55 ~148 ~140 candle[candles=2,lit=true]
+
 # Fenster vorne
 fill ~-51 ~129 ~20 ~-49 ~145 ~20 black_stained_glass_pane
 fill ~-41 ~129 ~20 ~-39 ~150 ~20 black_stained_glass_pane
 fill ~-31 ~129 ~20 ~-29 ~155 ~20 black_stained_glass_pane
 fill ~-21 ~129 ~20 ~-19 ~160 ~20 black_stained_glass_pane
 fill ~-11 ~129 ~20 ~-9 ~165 ~20 black_stained_glass_pane
-fill ~-1 ~129 ~20 ~1 ~170 ~20 black_stained_glass_pane
+fill ~-1 ~155 ~20 ~1 ~170 ~20 black_stained_glass_pane
 fill ~11 ~129 ~20 ~9 ~165 ~20 black_stained_glass_pane
 fill ~21 ~129 ~20 ~19 ~160 ~20 black_stained_glass_pane
 fill ~31 ~129 ~20 ~29 ~155 ~20 black_stained_glass_pane
@@ -88,7 +117,7 @@ fill ~-41 ~129 ~180 ~-39 ~150 ~180 black_stained_glass_pane
 fill ~-31 ~129 ~180 ~-29 ~155 ~180 black_stained_glass_pane
 fill ~-21 ~129 ~180 ~-19 ~160 ~180 black_stained_glass_pane
 fill ~-11 ~129 ~180 ~-9 ~165 ~180 black_stained_glass_pane
-fill ~-1 ~129 ~180 ~1 ~170 ~180 black_stained_glass_pane
+fill ~-1 ~155 ~180 ~1 ~170 ~180 black_stained_glass_pane
 fill ~11 ~129 ~180 ~9 ~165 ~180 black_stained_glass_pane
 fill ~21 ~129 ~180 ~19 ~160 ~180 black_stained_glass_pane
 fill ~31 ~129 ~180 ~29 ~155 ~180 black_stained_glass_pane

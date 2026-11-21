@@ -29,6 +29,8 @@ execute positioned ~10 ~-1 ~20 run function burg:turm11
 # Vorderwand
 execute positioned ~-50 ~-1 ~5 run function burg:turm11
 execute positioned ~40 ~-1 ~5 run function burg:turm11
+# Speisesaal reparieren
+fill ~-21 ~121 ~20 ~21 ~121 ~20 deepslate
 # Seitenwände von vorne nach hinten (link, rechts)
 execute positioned ~-85 ~-1 ~40 run function burg:turm11
 execute positioned ~75 ~-1 ~40 run function burg:turm11
