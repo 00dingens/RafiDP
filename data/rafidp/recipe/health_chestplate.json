@@ -1,0 +1,54 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "D D",
+    "DGD",
+    "DDD"
+  ],
+  "key": {
+    "D": "minecraft:diamond",
+    "G": "minecraft:golden_apple"
+  },
+  "result": {
+    "id": "minecraft:netherite_chestplate",
+    "count": 1,
+    "components": {
+      "minecraft:custom_name": {
+        "text": "Chestplate of Life",
+        "color": "gold",
+        "italic": false
+      },
+      "minecraft:attribute_modifiers": [
+        {
+          "id": "rafidp:vitality_chest_health",
+          "type": "minecraft:max_health",
+          "amount": 20.0,
+          "operation": "add_value",
+          "slot": "chest"
+        },
+        {
+          "id": "rafidp:vitality_chest_armor",
+          "type": "minecraft:armor",
+          "amount": 12.0,
+          "operation": "add_value",
+          "slot": "chest"
+        },
+        {
+          "id": "rafidp:vitality_chest_toughness",
+          "type": "minecraft:armor_toughness",
+          "amount": 5.0,
+          "operation": "add_value",
+          "slot": "chest"
+        },
+        {
+          "id": "rafidp:vitality_chest_knockback",
+          "type": "minecraft:knockback_resistance",
+          "amount": 0.2,
+          "operation": "add_value",
+          "slot": "chest"
+        }
+      ]
+    }
+  }
+}

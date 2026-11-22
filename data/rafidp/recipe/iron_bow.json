@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    " IS",
+    "I S",
+    " IS"
+  ],
+  "key": {
+    "I": "minecraft:iron_ingot",
+    "S": "minecraft:string"
+  },
+  "result": {
+    "id": "minecraft:bow",
+    "count": 1,
+    "components": {
+      "minecraft:custom_name": {
+        "text": "Iron Bow",
+        "color": "gold",
+        "italic": false
+      },
+      "minecraft:enchantments": {
+        "minecraft:power": 7
+      }
+    }
+  }
+}

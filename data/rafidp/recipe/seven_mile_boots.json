@@ -1,0 +1,53 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "D",
+    "F"
+  ],
+  "key": {
+    "D": "minecraft:diamond_boots",
+    "F": "minecraft:feather"
+  },
+  "result": {
+    "id": "minecraft:diamond_boots",
+    "count": 1,
+    "components": {
+      "minecraft:custom_name": {
+        "text": "Speed Boots",
+        "color": "gold",
+        "italic": false
+      },
+      "minecraft:attribute_modifiers": [
+        {
+          "id": "rafidp:swift_boots_speed",
+          "type": "minecraft:movement_speed",
+          "amount": 2.0,
+          "operation": "add_multiplied_base",
+          "slot": "feet"
+        },
+        {
+          "id": "rafidp:swift_boots_armor",
+          "type": "minecraft:armor",
+          "amount": 3.0,
+          "operation": "add_value",
+          "slot": "feet"
+        },
+        {
+          "id": "rafidp:swift_boots_toughness",
+          "type": "minecraft:armor_toughness",
+          "amount": 2.0,
+          "operation": "add_value",
+          "slot": "feet"
+        },
+        {
+          "id": "rafidp:swift_boots_step_height",
+          "type": "minecraft:step_height",
+          "amount": 1.0,
+          "operation": "add_value",
+          "slot": "feet"
+        }
+      ]
+    }
+  }
+}

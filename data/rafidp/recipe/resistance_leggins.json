@@ -1,0 +1,59 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "DDD",
+    "O O",
+    "D D"
+  ],
+  "key": {
+    "D": "minecraft:diamond",
+    "O": "minecraft:obsidian"
+  },
+  "result": {
+    "id": "minecraft:netherite_leggings",
+    "count": 1,
+    "components": {
+      "minecraft:custom_name": {
+        "text": "Resistance Leggins",
+        "color": "gold",
+        "italic": false
+      },
+      "minecraft:enchantments": {
+        "minecraft:fire_protection": 4,
+        "minecraft:blast_protection": 4,
+        "minecraft:projectile_protection": 4
+      },
+      "minecraft:attribute_modifiers": [
+        {
+          "id": "rafidp:bulwark_legs_knockback",
+          "type": "minecraft:knockback_resistance",
+          "amount": 0.6,
+          "operation": "add_value",
+          "slot": "legs"
+        },
+        {
+          "id": "rafidp:bulwark_legs_explosion_knockback",
+          "type": "minecraft:explosion_knockback_resistance",
+          "amount": 1.0,
+          "operation": "add_value",
+          "slot": "legs"
+        },
+        {
+          "id": "rafidp:bulwark_legs_armor",
+          "type": "minecraft:armor",
+          "amount": 6.0,
+          "operation": "add_value",
+          "slot": "legs"
+        },
+        {
+          "id": "rafidp:bulwark_legs_toughness",
+          "type": "minecraft:armor_toughness",
+          "amount": 3.0,
+          "operation": "add_value",
+          "slot": "legs"
+        }
+      ]
+    }
+  }
+}

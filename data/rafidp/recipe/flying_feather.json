@@ -1,0 +1,42 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    "minecraft:feather",
+    "minecraft:feather"
+  ],
+  "result": {
+    "id": "minecraft:feather",
+    "count": 1,
+    "components": {
+      "minecraft:custom_name": {
+        "text": "Flying Feather",
+        "color": "yellow",
+        "italic": false
+      },
+      "minecraft:attribute_modifiers": [
+        {
+          "id": "rafidp:flight_feather_jump",
+          "type": "minecraft:jump_strength",
+          "amount": 3.0,
+          "operation": "add_multiplied_base",
+          "slot": "hand"
+        },
+        {
+          "id": "rafidp:flight_feather_gravity",
+          "type": "minecraft:gravity",
+          "amount": -0.85,
+          "operation": "add_multiplied_base",
+          "slot": "hand"
+        },
+        {
+          "id": "rafidp:flight_feather_fall_damage",
+          "type": "minecraft:fall_damage_multiplier",
+          "amount": -1.0,
+          "operation": "add_multiplied_base",
+          "slot": "hand"
+        }
+      ]
+    }
+  }
+}

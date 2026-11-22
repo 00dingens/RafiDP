@@ -1,0 +1,46 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "DDD",
+    "DND"
+  ],
+  "key": {
+    "D": "minecraft:diamond_block",
+    "N": "minecraft:netherite_ingot"
+  },
+  "result": {
+    "id": "minecraft:netherite_helmet",
+    "count": 1,
+    "components": {
+      "minecraft:custom_name": {
+        "text": "War Helmet",
+        "color": "gold",
+        "italic": false
+      },
+      "minecraft:attribute_modifiers": [
+        {
+          "id": "rafidp:guardian_helmet_armor",
+          "type": "minecraft:armor",
+          "amount": 20.0,
+          "operation": "add_value",
+          "slot": "head"
+        },
+        {
+          "id": "rafidp:guardian_helmet_toughness",
+          "type": "minecraft:armor_toughness",
+          "amount": 10.0,
+          "operation": "add_value",
+          "slot": "head"
+        },
+        {
+          "id": "rafidp:guardian_helmet_knockback",
+          "type": "minecraft:knockback_resistance",
+          "amount": 0.2,
+          "operation": "add_value",
+          "slot": "head"
+        }
+      ]
+    }
+  }
+}
